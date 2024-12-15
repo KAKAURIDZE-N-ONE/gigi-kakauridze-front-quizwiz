@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "inter", sans-serif;
+}
+
+.raleway {
+  font-family: "raleway", sans-serif;
+}
+
+.opacityAnime {
+  animation: opacityAnime 300ms ease-in-out;
+}
+
+@keyframes opacityAnime {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.slideUpModal {
+  animation: slideUpModal 400ms ease;
+}
+
+@keyframes slideUpModal {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
