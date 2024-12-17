@@ -27,7 +27,7 @@ const LoginPage: React.FC = () => {
   if (windowWidth < 1280)
     return (
       <Layout>
-        <LandingPage />;
+        <LandingPage />
       </Layout>
     );
   else return <DesktopAutorizationPage />;

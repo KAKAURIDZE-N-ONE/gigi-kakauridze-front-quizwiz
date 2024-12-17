@@ -4,9 +4,29 @@ import InputsModalBody from "./InputsModalBody";
 import Input from "./Input";
 import CheckBox from "./CheckBox";
 import PrimaryButton from "./PrimaryButton";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { signUp } from "../utils/apiAuth";
+
+export type FormValues = {
+  name: string;
+  email: string;
+  password: string;
+  passwordRepeat: string;
+};
 
 const SignUpModalBody: React.FC = () => {
   const [checkboxIsChecked, setCheckboxIsChecked] = useState<boolean>(false);
+
+  const {
+    register,
+    handleSubmit,
+    // formState: { errors },
+  } = useForm<FormValues>();
+
+  const onSubmit: SubmitHandler<FormValues> = async (data) => {
+    await signUp(data);
+    // console.log(response);
+  };
 
   function handleCheckBoxClick() {
     setCheckboxIsChecked((status) => !status);
@@ -28,11 +48,39 @@ const SignUpModalBody: React.FC = () => {
             Log in
           </PrimaryButton>
         }
+        onSubmit={handleSubmit(onSubmit)}
       >
-        <Input placeholder="Your username">Username</Input>
-        <Input placeholder="Email">Example@gmail.com</Input>
-        <Input placeholder="must be 8 characters">Create a password</Input>
-        <Input placeholder="must be 8 characters">Confirm password</Input>
+        <Input
+          placeholder="Your username"
+          {...register("name", { required: "Name is required" })}
+        >
+          Username
+        </Input>
+        <Input
+          placeholder="Email"
+          type="email"
+          {...register("email", { required: "Email is required" })}
+        >
+          Example@gmail.com
+        </Input>
+        <Input
+          placeholder="must be 8 characters"
+          {...register("password", {
+            required: "Password is required",
+            minLength: 8,
+          })}
+        >
+          Create a password
+        </Input>
+        <Input
+          placeholder="must be 8 characters"
+          {...register("passwordRepeat", {
+            required: "Password is required",
+            minLength: 8,
+          })}
+        >
+          Confirm password
+        </Input>
         <CheckBox
           text="I accept the terms and privacy policy"
           handleCheckBoxClick={handleCheckBoxClick}
