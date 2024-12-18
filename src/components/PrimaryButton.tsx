@@ -1,12 +1,5 @@
 import React from "react";
-
-type BtnProps = {
-  children: string;
-  clickFn: () => void;
-  rounded?: string;
-  size?: string;
-  type?: "button" | "submit" | "reset";
-};
+import { BtnProps } from "@/types/buttons";
 
 const PrimaryButton: React.FC<BtnProps> = ({
   children,

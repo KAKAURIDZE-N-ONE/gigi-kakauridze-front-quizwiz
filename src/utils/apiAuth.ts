@@ -1,47 +1,24 @@
 import axios from "axios";
-import { FormValues } from "../components/SignUpModalBody";
-import { FormValuesLogin } from "../components/SignInModalBody";
-
-axios.defaults.withCredentials = true;
-axios.defaults.withXSRFToken = true;
+import { authInstace } from "../../axios";
+import { FormValues, FormValuesLogin } from "@/types";
 
 export async function logIn(data: FormValuesLogin): Promise<any> {
-  await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie", {
-    withCredentials: true,
-  });
+  await authInstace.get(`/sanctum/csrf-cookie`);
 
-  const { token } = data;
-  console.log(token);
-  return;
-
-  const response = await axios.post("http://127.0.0.1:8000/api/log-in", data, {
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    withCredentials: true,
-  });
+  const response = await authInstace.post(`/api/log-in`, data);
 
   console.log(response);
 }
 
 export async function signUp(data: FormValues) {
   try {
-    await axios.get("http://127.0.0.1:8000/sanctum/csrf-cookie", {
+    await authInstace.get(`/sanctum/csrf-cookie`, {
       withCredentials: true,
     });
 
-    const response = await axios.post(
-      "http://127.0.0.1:8000/api/sign-up",
-      data,
-      {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        withCredentials: true,
-      }
-    );
+    const response = await authInstace.post("/api/sign-up", data, {
+      withCredentials: true,
+    });
 
     console.log(response.data);
 
@@ -54,9 +31,9 @@ export async function signUp(data: FormValues) {
 
 export async function getUser() {
   try {
-    const user = await axios.get("http://127.0.0.1:8000/api/user", {
-      withCredentials: true,
-    });
+    const user = await authInstace.get(`/api/user`);
+
+    console.log(user);
   } catch (error) {
     console.error("User not found", error);
   }

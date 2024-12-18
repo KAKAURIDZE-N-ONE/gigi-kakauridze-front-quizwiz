@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom";
-import { LandingPage } from "./pages/LandingPage";
-import Layout from "./components/Layout";
-import { LoginPage } from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage/SignupPage";
+import { LandingPage } from "@/pages/LandingPage";
+import Layout from "@/components/Layout";
+import { LoginPage } from "@/pages/LoginPage";
+import SignupPage from "@/pages/SignupPage/SignupPage";
 
 function App() {
   return (

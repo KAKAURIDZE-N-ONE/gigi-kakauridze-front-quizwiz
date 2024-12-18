@@ -1,6 +1,6 @@
 import React, { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { getModalOpacity, updateModalIsOpen } from "../state/slices/modalSlice";
+import { getModalOpacity, updateModalIsOpen } from "@/state/slices/modalSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 type ModalProps = {

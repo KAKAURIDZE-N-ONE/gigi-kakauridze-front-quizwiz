@@ -3,7 +3,7 @@ import Logo from "./svgs/LogoIcon";
 import XBtnIcon from "./svgs/XBtnIcon";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import yavela from "../assets/images/yavela.jpg";
+import gela from "@/assets/images/gela.jpg";
 import SignUpModalBody from "./SignUpModalBody";
 import SignInModalBody from "./SignInModalBody";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +11,9 @@ import {
   getMobileSignInIsOpen,
   getMobileSignUpIsOpen,
   updateModalIsOpen,
-} from "../state/slices/modalSlice";
+} from "@/state/slices/modalSlice";
 import { useNavigate } from "react-router-dom";
+import InputsModal from "./InputsModal";
 
 const AutorizationModalBody: React.FC = () => {
   const mobileSignInIsOpen = useSelector(getMobileSignInIsOpen);
@@ -28,8 +29,16 @@ const AutorizationModalBody: React.FC = () => {
   const isAuthenticated = false;
   return (
     <>
-      {mobileSignUpIsOpen && <SignUpModalBody />}
-      {mobileSignInIsOpen && <SignInModalBody />}
+      {mobileSignUpIsOpen && (
+        <InputsModal>
+          <SignUpModalBody type="mobile" />
+        </InputsModal>
+      )}
+      {mobileSignInIsOpen && (
+        <InputsModal>
+          <SignInModalBody type="mobile" />
+        </InputsModal>
+      )}
       <div
         className={`bg-white px-6 pt-6 pb-8 transition-all duration-300 ${
           mobileSignUpIsOpen || mobileSignInIsOpen
@@ -61,7 +70,7 @@ const AutorizationModalBody: React.FC = () => {
               <div className="flex items-center gap-x-[1.25rem]">
                 <div
                   style={{
-                    backgroundImage: `url(${yavela})`,
+                    backgroundImage: `url(${gela})`,
                   }}
                   className="w-[3.9375rem] h-[3.9375rem]
                 bg-center bg-cover bg-no-repeat rounded-full"

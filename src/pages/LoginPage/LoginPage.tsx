@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
-import useWindowWidth from "../../hooks/useWindowWidth";
-import { LandingPage } from "../LandingPage";
+import useWindowWidth from "@/hooks/useWindowWidth";
+import { LandingPage } from "@/pages/LandingPage/index";
 import { useDispatch } from "react-redux";
 import {
   updateMobileSignInIsOpen,
   updateMobileSignUpIsOpen,
   updateModalIsOpen,
-} from "../../state/slices/modalSlice";
-import DesktopAutorizationPage from "../DesktopAutorizationPage/DesktopAutorizationPage";
-import Layout from "../../components/Layout";
+} from "@/state/slices/modalSlice";
+import DesktopAutorizationPage from "@/pages/DesktopAutorizationPage/DesktopAutorizationPage";
+import Layout from "@/components/Layout";
 
 const LoginPage: React.FC = () => {
   const windowWidth = useWindowWidth();

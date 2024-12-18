@@ -1,9 +1,5 @@
 import React from "react";
-
-type ButtonProps = {
-  children: string;
-  clickFn: () => void;
-};
+import { ButtonProps } from "@/types/buttons";
 
 const SecondaryButton: React.FC<ButtonProps> = ({ children, clickFn }) => {
   return (

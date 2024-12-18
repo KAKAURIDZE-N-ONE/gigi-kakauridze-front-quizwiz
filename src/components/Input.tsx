@@ -1,11 +1,5 @@
 import React from "react";
-
-type InputProps = {
-  children: string;
-  placeholder: string;
-  type?: string;
-  register?: any;
-};
+import { InputProps } from "@/types/formComponents";
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ children, placeholder, ...rest }, ref) => {
