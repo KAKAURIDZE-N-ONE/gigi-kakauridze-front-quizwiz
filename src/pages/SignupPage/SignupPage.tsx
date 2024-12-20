@@ -5,7 +5,7 @@ import {
   updateMobileSignInIsOpen,
   updateMobileSignUpIsOpen,
   updateModalIsOpen,
-} from "@/state/slices/modalSlice";
+} from "@/store/slices/modalSlice";
 import { LandingPage } from "@/pages/LandingPage/index";
 import DesktopAutorizationPage from "@/pages/DesktopAutorizationPage/DesktopAutorizationPage";
 import Layout from "@/components/Layout";

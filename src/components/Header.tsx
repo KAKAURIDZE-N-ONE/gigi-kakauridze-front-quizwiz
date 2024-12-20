@@ -11,7 +11,7 @@ import {
   updateMobileSignUpIsOpen,
   updateModalIsOpen,
   updateModalOpacity,
-} from "@/state/slices/modalSlice";
+} from "@/store/slices/modalSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 

@@ -3,7 +3,7 @@ import Logo from "./svgs/LogoIcon";
 import XBtnIcon from "./svgs/XBtnIcon";
 import PrimaryButton from "./PrimaryButton";
 import SecondaryButton from "./SecondaryButton";
-import gela from "@/assets/images/gela.jpg";
+import profileImage from "@/assets/images/profileImage.jpg";
 import SignUpModalBody from "./SignUpModalBody";
 import SignInModalBody from "./SignInModalBody";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,7 +11,7 @@ import {
   getMobileSignInIsOpen,
   getMobileSignUpIsOpen,
   updateModalIsOpen,
-} from "@/state/slices/modalSlice";
+} from "@/store/slices/modalSlice";
 import { useNavigate } from "react-router-dom";
 import InputsModal from "./InputsModal";
 
@@ -70,7 +70,7 @@ const AutorizationModalBody: React.FC = () => {
               <div className="flex items-center gap-x-[1.25rem]">
                 <div
                   style={{
-                    backgroundImage: `url(${gela})`,
+                    backgroundImage: `url(${profileImage})`,
                   }}
                   className="w-[3.9375rem] h-[3.9375rem]
                 bg-center bg-cover bg-no-repeat rounded-full"
