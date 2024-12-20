@@ -4,8 +4,8 @@ import Input from "./Input";
 import CheckBox from "./CheckBox";
 import PrimaryButton from "./PrimaryButton";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { signUp } from "@/utils/apiAuth";
 import { FormValues } from "@/types";
+import useSignUp from "@/hooks/useSignUp";
 
 type ModalBodyProps = {
   type: "desktop" | "mobile";
@@ -14,16 +14,13 @@ type ModalBodyProps = {
 const SignUpModalBody: React.FC<ModalBodyProps> = ({ type }) => {
   const [checkboxIsChecked, setCheckboxIsChecked] = useState<boolean>(false);
 
-  const {
-    register,
-    handleSubmit,
-    // formState: { errors },
-  } = useForm<FormValues>();
+  const { register, handleSubmit } = useForm<FormValues>();
+
+  const { mutate, isPending, isError } = useSignUp();
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
     if (!checkboxIsChecked) return;
-    await signUp(data);
-    // console.log(response);
+    mutate(data);
   };
 
   function handleCheckBoxClick() {

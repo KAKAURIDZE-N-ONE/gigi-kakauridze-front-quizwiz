@@ -4,8 +4,8 @@ import Input from "./Input";
 import CheckBox from "./CheckBox";
 import PrimaryButton from "./PrimaryButton";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { logIn } from "@/utils/apiAuth";
 import { FormValuesLogin } from "@/types";
+import useLogIn from "@/hooks/useLogIn";
 
 type ModalBodyProps = {
   type: "desktop" | "mobile";
@@ -13,6 +13,8 @@ type ModalBodyProps = {
 
 const SignUpModalBody: React.FC<ModalBodyProps> = ({ type }) => {
   const [checkboxIsChecked, setCheckboxIsChecked] = useState<boolean>(false);
+
+  const { mutate, isPending, isError } = useLogIn();
 
   const {
     register,
@@ -25,7 +27,7 @@ const SignUpModalBody: React.FC<ModalBodyProps> = ({ type }) => {
   }
 
   const onSubmit: SubmitHandler<FormValuesLogin> = async (data) => {
-    await logIn(data);
+    mutate(data);
   };
 
   return (

@@ -7,7 +7,6 @@ import { useLocation } from "react-router-dom";
 
 const DesktopAutorizationPage: React.FC = () => {
   const { pathname } = useLocation();
-  console.log(location);
   return (
     <div
       className="h-[100vh] w-full 
