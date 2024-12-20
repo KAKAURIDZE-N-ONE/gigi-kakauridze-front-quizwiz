@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import {
   updateModalIsOpen,
   updateModalOpacity,
-} from "../state/slices/modalSlice";
+} from "@/store/slices/modalSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -44,10 +44,6 @@ const InputsModal: React.FC<ModalProps> = ({ children }) => {
             bg-white px-[1.1875rem] overflow-scroll
              transition-all duration-[400ms]"
             >
-              <div
-                className="w-8 h-1 rounded-full
-              bg-gray4 mx-auto mt-4 opacity-40"
-              ></div>
               {children}
             </div>
           </div>

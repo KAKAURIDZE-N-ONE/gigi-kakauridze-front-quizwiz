@@ -1,13 +1,15 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 
-const Logo: React.FC = () => {
-  const navigate = useNavigate();
+type LogoProps = {
+  size?: string;
+};
+
+const Logo: React.FC<LogoProps> = ({ size }) => {
   return (
-    <div className="hover:cursor-pointer" onClick={() => navigate("/")}>
+    <div className="hover:cursor-pointer">
       <svg
-        width="93"
-        height="21"
+        width={size === "small" ? "77" : "93"}
+        height={size === "small" ? "17" : "21"}
         viewBox="0 0 93 21"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

@@ -11,7 +11,7 @@ import {
   updateMobileSignUpIsOpen,
   updateModalIsOpen,
   updateModalOpacity,
-} from "../state/slices/modalSlice";
+} from "@/store/slices/modalSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -41,7 +41,9 @@ const Header: React.FC = () => {
       transition-all duration-400 sticky top-0 left-0 z-[30] bg-white"
       >
         <div className="flex items-center gap-14">
-          <LogoIcon />
+          <div onClick={() => navigate("/")}>
+            <LogoIcon />
+          </div>
           <h2 className="text-gray2 text-sm font-semibold hidden lg:inline-block cursor-pointer">
             Quizzes
           </h2>

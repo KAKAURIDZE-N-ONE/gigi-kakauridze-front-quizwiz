@@ -1,7 +1,10 @@
 import React from "react";
 import Logo from "./svgs/LogoIcon";
+import { useNavigate } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="lg:h-[16.25rem] pt-4">
       <div
@@ -10,7 +13,9 @@ const Footer: React.FC = () => {
       >
         <div className="px-10 lg:px-0">
           <div className="h-18 flex items-center">
-            <Logo />
+            <div onClick={() => navigate("/")}>
+              <Logo />
+            </div>
           </div>
         </div>
         <div>

@@ -1,12 +1,7 @@
 import React from "react";
 import CheckBoxMarked from "./svgs/CheckBoxMarked";
 import CheckBoxUnmarked from "./svgs/CheckBoxUnmarked";
-
-type CheckBoxProps = {
-  handleCheckBoxClick: () => void;
-  checkboxIsChecked: boolean;
-  text: string;
-};
+import { CheckBoxProps } from "types/formComponents";
 
 const CheckBox: React.FC<CheckBoxProps> = ({
   handleCheckBoxClick,
