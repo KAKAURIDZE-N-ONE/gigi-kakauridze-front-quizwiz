@@ -40,3 +40,14 @@ export type Category = {
   created_at?: string | null;
   updated_at?: string | null;
 };
+
+type DifficultyProperties = {
+  iconColor: string;
+  bgColor: string;
+};
+
+export type Difficulties = {
+  easy: DifficultyProperties;
+  medium: DifficultyProperties;
+  hard: DifficultyProperties;
+};

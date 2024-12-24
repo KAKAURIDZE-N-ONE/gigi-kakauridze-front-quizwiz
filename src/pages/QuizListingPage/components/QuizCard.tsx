@@ -3,20 +3,9 @@ import IconLayout from "./IconLayout";
 import MarkIcon from "../svgs/MarkIcon";
 import LightningIcon from "../svgs/LightningIcon";
 import PointsIcon from "../svgs/PointsIcon";
-import { Category, PivotUser, Question } from "@/types";
+import { Category, Difficulties, PivotUser, Question } from "@/types";
 import BulbIcon from "../svgs/BulbIcon";
-import timeFormatter from "@/utils/timeFormatter";
-
-type DifficultyProperties = {
-  iconColor: string;
-  bgColor: string;
-};
-
-type Difficulties = {
-  easy: DifficultyProperties;
-  medium: DifficultyProperties;
-  hard: DifficultyProperties;
-};
+import { timeFormatter } from "@/utils/timeFormatter";
 
 const difficulties: Difficulties = {
   easy: {

@@ -1,3 +1,3 @@
-export default function (seconds: number) {
+export function timeFormatter(seconds: number) {
   return Math.floor(seconds / 60);
 }
