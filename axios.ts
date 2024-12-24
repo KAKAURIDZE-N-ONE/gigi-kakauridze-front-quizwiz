@@ -9,3 +9,10 @@ export const authInstace = axios.create({
   withCredentials: true,
   withXSRFToken: true,
 });
+
+export const normalInstace = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});

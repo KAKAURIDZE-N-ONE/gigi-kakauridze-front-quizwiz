@@ -6,13 +6,13 @@ const Footer: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="lg:h-[16.25rem] pt-4">
+    <div className="lg:h-[16.25rem]">
       <div
         className="h-30  relative z-10 bg-white lg:flex
-      border-b border-b-white1 lg:gap-[4.5rem] lg:px-24"
+      border-b border-b-white1 border-t  border-t-white1 lg:gap-[4.5rem] lg:px-24"
       >
         <div className="px-10 lg:px-0">
-          <div className="h-18 flex items-center">
+          <div className="h-18 flex items-center lg:border-b-white border-b border-b-white1">
             <div onClick={() => navigate("/")}>
               <Logo />
             </div>
@@ -55,7 +55,7 @@ const Footer: React.FC = () => {
         className="h-[4.2rem] pr-28 items-center hidden 
       lg:flex justify-end"
       >
-        <p className="text-gray text-smaller font-medium">
+        <p className="text-gray text-smaller font-medium translate-y-[0.375rem]">
           © 2024 QW. All rights reserved
         </p>
       </div>

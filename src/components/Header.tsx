@@ -14,6 +14,7 @@ import {
 } from "@/store/slices/modalSlice";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   const modalIsOpen = useSelector(getModalIsOpen);
@@ -44,9 +45,12 @@ const Header: React.FC = () => {
           <div onClick={() => navigate("/")}>
             <LogoIcon />
           </div>
-          <h2 className="text-gray2 text-sm font-semibold hidden lg:inline-block cursor-pointer">
+          <Link
+            to="/quizzes"
+            className="text-gray2 text-sm font-semibold hidden lg:inline-block cursor-pointer"
+          >
             Quizzes
-          </h2>
+          </Link>
         </div>
 
         <div className="flex gap-2 items-center lg:hidden">
