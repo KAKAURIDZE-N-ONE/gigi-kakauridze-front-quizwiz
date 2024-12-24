@@ -14,10 +14,13 @@ import {
 } from "@/store/slices/modalSlice";
 import { useNavigate } from "react-router-dom";
 import InputsModal from "./InputsModal";
+import { useAuthentication } from "@/hooks/useAuthentication";
 
 const AutorizationModalBody: React.FC = () => {
   const mobileSignInIsOpen = useSelector(getMobileSignInIsOpen);
   const mobileSignUpIsOpen = useSelector(getMobileSignUpIsOpen);
+
+  const { isAuthenticated } = useAuthentication();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -26,7 +29,6 @@ const AutorizationModalBody: React.FC = () => {
     dispatch(updateModalIsOpen(false));
   }
 
-  const isAuthenticated = false;
   return (
     <>
       {mobileSignUpIsOpen && (

@@ -48,7 +48,10 @@ const InputsModalBody: React.FC<ModalBodyProps> = ({
       )}
       <form onSubmit={onSubmit} className="flex flex-col gap-[2.5rem]">
         <div className="flex flex-col gap-y-6 text-center mt-10">
-          <div className="flex justify-center items-center gap-2">
+          <div
+            className={`flex items-center  gap-2
+            ${type === "desktop" ? "justify-start" : "justify-center"}`}
+          >
             <h2 className="raleway font-extrabold text-[1.875rem]">{title}</h2>
             {image && <img src={image} alt="Hand icon" />}
           </div>
@@ -69,7 +72,7 @@ const InputsModalBody: React.FC<ModalBodyProps> = ({
         </div>
       </form>
       {type === "desktop" && (
-        <div className="flex gap-x-2 justify-center">
+        <div className="mt-[2.375rem] flex gap-x-2 justify-start">
           <p className="text-black2 ">{description}</p>
           {link?.name && (
             <Link className="text-blue font-semibold" to={link?.href}>

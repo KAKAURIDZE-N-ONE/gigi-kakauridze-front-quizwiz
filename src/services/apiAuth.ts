@@ -1,9 +1,11 @@
+import { UseFormProps } from "react-hook-form";
 import { authInstace } from "../../axios";
 import {
   FormValues,
   FormValuesLogin,
   verifyUserEmail as verifyUserEmailProps,
 } from "@/types";
+import { UserTable } from "@/types/tables";
 
 export async function logIn(data: FormValuesLogin): Promise<any> {
   await authInstace.get(`/sanctum/csrf-cookie`);
@@ -27,17 +29,18 @@ export async function signUp(data: FormValues) {
   }
 }
 
-export async function getUser() {
+export async function getUser(): Promise<UserTable> {
   try {
-    const user = await authInstace.get(`/api/user`);
+    const response = await authInstace.get<UserTable>(`/api/user`);
 
-    console.log(user.data);
+    return response.data;
   } catch (error) {
     console.error("User not found", error);
+    throw new Error("Failed to fetch user data");
   }
 }
 
-getUser();
+// getUser();
 
 export async function verifyUserEmail({
   id,

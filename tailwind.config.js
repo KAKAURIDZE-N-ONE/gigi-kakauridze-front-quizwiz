@@ -12,6 +12,7 @@ export default {
         white1: "#F2F4F7",
         white2: "#EAFAFE",
         white3: "#D0D5DD",
+        white4: "#FAFAFA",
         carrot: "#FF5613",
         blue: "#4B69FD",
         black1: "#101828",
