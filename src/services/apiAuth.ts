@@ -16,6 +16,14 @@ export async function logIn(data: FormValuesLogin): Promise<any> {
   return response;
 }
 
+export async function logOut() {
+  await authInstace.get(`/sanctum/csrf-cookie`);
+
+  const response = await authInstace.post("/api/log-out");
+
+  return response;
+}
+
 export async function signUp(data: FormValues) {
   try {
     await authInstace.get(`/sanctum/csrf-cookie`);

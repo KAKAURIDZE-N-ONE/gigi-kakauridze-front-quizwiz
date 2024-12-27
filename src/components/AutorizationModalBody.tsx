@@ -15,12 +15,17 @@ import {
 import { useNavigate } from "react-router-dom";
 import InputsModal from "./InputsModal";
 import { useAuthentication } from "@/hooks/useAuthentication";
+import useLogOut from "@/hooks/useLogOut";
 
 const AutorizationModalBody: React.FC = () => {
   const mobileSignInIsOpen = useSelector(getMobileSignInIsOpen);
   const mobileSignUpIsOpen = useSelector(getMobileSignUpIsOpen);
 
-  const { isAuthenticated } = useAuthentication();
+  const { isAuthenticated, user } = useAuthentication();
+
+  console.log(user);
+
+  const { logout } = useLogOut();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -28,6 +33,14 @@ const AutorizationModalBody: React.FC = () => {
   function handleXClick() {
     dispatch(updateModalIsOpen(false));
   }
+
+  const handleLogout = async () => {
+    try {
+      await logout(); // This will trigger the logout process and invalidate the user query
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
+  };
 
   return (
     <>
@@ -79,17 +92,19 @@ const AutorizationModalBody: React.FC = () => {
                 ></div>
                 <div className="flex flex-col gap-y-[0.125rem]">
                   <h4 className="text-base font-semibold text-black1">
-                    Oliver Rhye
+                    {user?.name}
                   </h4>
                   <p
                     className="font-normal text-gray2 
                   text-sm"
                   >
-                    oliverrhye@gmail.com
+                    {user?.email}
                   </p>
                 </div>
               </div>
-              <SecondaryButton clickFn={() => {}}>Log out</SecondaryButton>
+              <SecondaryButton clickFn={() => handleLogout()}>
+                Log out
+              </SecondaryButton>
             </>
           ) : (
             <>

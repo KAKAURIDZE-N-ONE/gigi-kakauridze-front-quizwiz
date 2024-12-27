@@ -13,7 +13,16 @@ const CategoryItem: React.FC<CategoryItemProps> = ({ category, isActive }) => {
   return (
     <li
       onClick={() => {
-        customUpdateQueryParams("categories", category.name, "add", true);
+        if (category.name !== "All Quizzes")
+          customUpdateQueryParams(
+            "categories",
+            String(category.id),
+            "add",
+            true
+          );
+        else {
+          customUpdateQueryParams("categories", "", "clear-field");
+        }
       }}
       key={category.id}
       className={`${isActive ? "border-b-black" : "border-b-transparent"} 

@@ -1,10 +1,14 @@
 import React from "react";
 
-const XButton: React.FC = () => {
+type ButtonProps = {
+  size?: string;
+};
+
+const XButton: React.FC<ButtonProps> = ({ size }) => {
   return (
     <svg
-      width="14"
-      height="14"
+      width={size ? size : "14"}
+      height={size ? size : "14"}
       viewBox="0 0 14 14"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

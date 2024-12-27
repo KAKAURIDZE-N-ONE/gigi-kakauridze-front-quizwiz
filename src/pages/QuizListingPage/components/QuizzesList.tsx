@@ -8,7 +8,7 @@ type QuizzesListProps = {
 };
 
 const QuizzesList: React.FC<QuizzesListProps> = ({ page, setHasNextPage }) => {
-  const { quizzes, isPending, error } = useGetQuizzes(page, setHasNextPage);
+  const { quizzes } = useGetQuizzes(page, setHasNextPage);
 
   return (
     <div className="grid grid-cols-1  lg:grid-cols-3 gap-8 lg:mt-10 mt-5">
@@ -21,8 +21,8 @@ const QuizzesList: React.FC<QuizzesListProps> = ({ page, setHasNextPage }) => {
             userDetails={quiz?.users?.at(0)}
             key={quiz.id}
             total_filled={quiz.total_filled}
-            difficulty={quiz.difficulty}
             questions={quiz?.questions}
+            level={quiz.level}
           />
         );
       })}

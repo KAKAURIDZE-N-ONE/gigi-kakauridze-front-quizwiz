@@ -7,7 +7,7 @@ import { Category } from "@/types";
 import CategoryItem from "./CategoryItem";
 
 const Categories: React.FC = () => {
-  const activeCategory = useGetQueryParams("categories")[0];
+  const activeCategories = useGetQueryParams("categories");
 
   const { data: categories } = useQuery({
     queryKey: ["categories"],
@@ -22,8 +22,16 @@ const Categories: React.FC = () => {
       >
         <div className="relative">
           <ul className="flex gap-4">
+            <CategoryItem
+              key={"All Quizzes"}
+              category={{
+                id: 99999999931313,
+                name: "All Quizzes",
+              }}
+              isActive={activeCategories.length === 0}
+            />
             {categories?.map((category: Category) => {
-              const isActive = category.name === activeCategory;
+              const isActive = activeCategories.includes(String(category.id));
 
               return (
                 <CategoryItem

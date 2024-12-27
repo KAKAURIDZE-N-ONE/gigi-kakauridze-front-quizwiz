@@ -1,7 +1,7 @@
 export type Quiz = {
   created_at: string | null;
   description: string;
-  difficulty: string;
+  level: Level;
   duration: string | null;
   id: number;
   image: string;
@@ -11,6 +11,14 @@ export type Quiz = {
   updated_at: string | null;
   total_filled: number;
   users?: PivotUser[] | undefined;
+};
+
+export type Level = {
+  background_color: string;
+  active_background_color: string;
+  icon_color: string;
+  id: number;
+  level: string;
 };
 
 export type PivotUser = {
@@ -39,15 +47,4 @@ export type Category = {
   };
   created_at?: string | null;
   updated_at?: string | null;
-};
-
-type DifficultyProperties = {
-  iconColor: string;
-  bgColor: string;
-};
-
-export type Difficulties = {
-  easy: DifficultyProperties;
-  medium: DifficultyProperties;
-  hard: DifficultyProperties;
 };
