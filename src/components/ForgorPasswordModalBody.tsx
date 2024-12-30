@@ -1,6 +1,6 @@
 import React from "react";
-import InputsModal from "./InputsModal";
-import InputsModalBody from "./InputsModalBody";
+import InputsModal from "./InputsModal/InputsModal";
+import InputsModalBody from "./InputsModalBody/InputsModalBody";
 import Input from "./Input";
 import PrimaryButton from "./PrimaryButton";
 

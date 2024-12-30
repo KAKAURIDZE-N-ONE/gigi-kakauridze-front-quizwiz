@@ -1,35 +1,24 @@
-import React, { useRef, useState } from "react";
-import Categories from "./components/Categories";
-import FilterButton from "./components/FilterButton";
-import QuizzesList from "./components/QuizzesList";
+import React from "react";
+import Categories from "./components/Categories/Categories";
+import FilterButton from "./components/FilterButton/FilterButton";
+import QuizzesList from "./components/QuizzesList/QuizzesList";
 import LoadMoreButton from "./components/LoadMoreButton";
-import Modal from "@/components/Modal";
-import useWindowWidth from "@/hooks/useWindowWidth";
-import FilterBody from "./components/FilterBody";
-import useOutsideClick from "@/hooks/useOutsideClick";
-import { useSelector } from "react-redux";
-import { getPage, updatePage } from "@/store/slices/quizSlice";
-import { useDispatch } from "react-redux";
+import Modal from "@/components/Modal/Modal";
+import FilterBody from "./components/FilterBody/FilterBody";
+import useQuizListing from "./useQuizListing";
 
 const QuizListingPage: React.FC = () => {
-  const desktopFilterRef = useRef<HTMLDivElement | null>(null);
-  const page = useSelector(getPage);
-  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
-  const [filterIsActive, setFilterIsActive] = useState<boolean>(false);
-
-  const dispatch = useDispatch();
-
-  const windowWidth = useWindowWidth();
-
-  useOutsideClick(desktopFilterRef, () => setFilterIsActive(false));
-
-  function handleLoadMoreClick() {
-    dispatch(updatePage(page + 1));
-  }
-
-  function handleFilterActiveChange(isActive: boolean) {
-    setFilterIsActive(isActive);
-  }
+  const {
+    hasNextPage,
+    setHasNextPage,
+    filterIsActive,
+    windowWidth,
+    handleLoadMoreClick,
+    handleFilterActiveChange,
+    setFilterIsActive,
+    desktopFilterRef,
+    page,
+  } = useQuizListing();
 
   return (
     <div className="lg:px-24 px-4 pb-4">

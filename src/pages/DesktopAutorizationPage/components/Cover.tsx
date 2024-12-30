@@ -1,5 +1,5 @@
-import AutorizationDesktopIcon from "@/pages/DesktopAutorizationPage/components/svgs/AutorizationDesktopIcon";
-import Logo from "@/components/svgs/LogoIcon";
+import AutorizationDesktopIcon from "@/pages/DesktopAutorizationPage/svgs/AutorizationDesktopIcon";
+import Logo from "@/assets/svgs/LogoIcon";
 import React from "react";
 
 const Cover: React.FC = () => {

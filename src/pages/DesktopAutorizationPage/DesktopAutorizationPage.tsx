@@ -1,13 +1,12 @@
 import React from "react";
 import Cover from "./components/Cover";
-import LeftArrow from "./components/svgs/LeftArrow";
-import SignUpModalBody from "@/components/SignUpModalBody";
-import SignInModalBody from "@/components/SignInModalBody";
-import { useLocation, useNavigate } from "react-router-dom";
+import LeftArrow from "./svgs/LeftArrow";
+import SignUpModalBody from "@/components/SignUpModalBody/SignUpModalBody";
+import SignInModalBody from "@/components/SignInModalBody/SignInModalBody";
+import useDesktopAutorizationPage from "./useDesktopAutorizationPage";
 
 const DesktopAutorizationPage: React.FC = () => {
-  const { pathname } = useLocation();
-  const navigate = useNavigate();
+  const { navigate, pathname } = useDesktopAutorizationPage();
 
   return (
     <div

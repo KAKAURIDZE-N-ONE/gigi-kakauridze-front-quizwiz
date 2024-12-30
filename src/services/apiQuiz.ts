@@ -11,7 +11,8 @@ export async function getQuizzes(
     activeCategories: string[];
     activeCompleted: string[];
   },
-  activeSortBy: string
+  activeSortBy?: string,
+  activeDirection?: string
 ) {
   const params = new URLSearchParams();
 
@@ -33,32 +34,23 @@ export async function getQuizzes(
     params.append("sortBy", activeSortBy);
   }
 
-  try {
-    const response = await authInstace.get(`/api/quizzes?${params.toString()}`);
-
-    return response.data;
-  } catch (error) {
-    console.error("User not found", error);
-    throw new Error("Failed to fetch user data");
+  if (activeDirection) {
+    params.append("direction", activeDirection);
   }
+
+  const response = await authInstace.get(`/api/quizzes?${params.toString()}`);
+
+  return response.data;
 }
 
 export async function getCategories() {
-  try {
-    const response = await normalInstace.get("/api/categories");
+  const response = await normalInstace.get("/api/categories");
 
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+  return response.data;
 }
 
 export async function getLevels() {
-  try {
-    const response = await normalInstace.get("/api/levels");
+  const response = await normalInstace.get("/api/levels");
 
-    return response.data;
-  } catch (error) {
-    console.error(error);
-  }
+  return response.data;
 }

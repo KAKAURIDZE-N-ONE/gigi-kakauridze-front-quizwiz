@@ -1,28 +1,11 @@
-import React, { useEffect } from "react";
-import useWindowWidth from "@/hooks/useWindowWidth";
+import React from "react";
 import { LandingPage } from "@/pages/LandingPage/index";
-import { useDispatch } from "react-redux";
-import {
-  updateMobileSignInIsOpen,
-  updateMobileSignUpIsOpen,
-  updateModalIsOpen,
-} from "@/store/slices/modalSlice";
 import DesktopAutorizationPage from "@/pages/DesktopAutorizationPage/DesktopAutorizationPage";
 import Layout from "@/components/Layout";
+import useLoginPage from "./useLoginPage";
 
 const LoginPage: React.FC = () => {
-  const windowWidth = useWindowWidth();
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (windowWidth < 1280) {
-      dispatch(updateModalIsOpen(true));
-      dispatch(updateMobileSignInIsOpen(true));
-      dispatch(updateMobileSignUpIsOpen(false));
-    } else {
-      dispatch(updateModalIsOpen(false));
-    }
-  }, [windowWidth]);
+  const { windowWidth } = useLoginPage();
 
   if (windowWidth < 1280)
     return (
