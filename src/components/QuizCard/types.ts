@@ -1,14 +1,14 @@
 import { Category, Level, PivotUser, Question } from "@/types";
 
-export interface HookType {
+export type Hook = {
   questions: Question[];
-  userDetails: PivotUser | undefined;
-}
+  userDetails?: PivotUser;
+};
 
-export interface PropsType extends HookType {
+export type Props = Hook & {
   title: string;
   categories: Category[];
   image: string;
   total_filled: number;
   level: Level;
-}
+};

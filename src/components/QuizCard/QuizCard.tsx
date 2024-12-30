@@ -5,10 +5,10 @@ import LightningIcon from "../../pages/QuizListingPage/svgs/LightningIcon";
 import PointsIcon from "../../pages/QuizListingPage/svgs/PointsIcon";
 import BulbIcon from "../../pages/QuizListingPage/svgs/BulbIcon";
 import { timeFormatter } from "@/utils/timeFormatter";
-import { PropsType } from "./types";
 import useQuizCard from "./useQuizCard";
+import { Props } from "./types";
 
-const QuizCard: React.FC<PropsType> = ({
+const QuizCard: React.FC<Props> = ({
   image,
   title,
   categories,
