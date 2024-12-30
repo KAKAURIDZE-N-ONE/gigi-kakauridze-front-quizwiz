@@ -1,7 +1,7 @@
 import React from "react";
-import HeroIcon from "@/components/svgs/HeroIcon";
-import HeroArrowIcon from "@/components/svgs/HeroArrowIcon";
-import HeroTitle from "@/components/svgs/HeroTitle";
+import HeroIcon from "@/assets/svgs/HeroIcon";
+import HeroArrowIcon from "@/assets/svgs/HeroArrowIcon";
+import HeroTitle from "@/assets/svgs/HeroTitle";
 
 const Hero: React.FC = () => {
   return (

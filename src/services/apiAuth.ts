@@ -1,4 +1,3 @@
-import { UseFormProps } from "react-hook-form";
 import { authInstace } from "../../axios";
 import {
   FormValues,
@@ -16,31 +15,25 @@ export async function logIn(data: FormValuesLogin): Promise<any> {
   return response;
 }
 
+export async function logOut() {
+  const response = await authInstace.post("/api/log-out");
+
+  return response;
+}
+
 export async function signUp(data: FormValues) {
-  try {
-    await authInstace.get(`/sanctum/csrf-cookie`);
+  await authInstace.get(`/sanctum/csrf-cookie`);
 
-    const response = await authInstace.post("/api/sign-up", data);
+  const response = await authInstace.post("/api/sign-up", data);
 
-    return response.data;
-  } catch (error) {
-    console.error("Error in register function:", error);
-    throw error;
-  }
+  return response.data;
 }
 
 export async function getUser(): Promise<UserTable> {
-  try {
-    const response = await authInstace.get<UserTable>(`/api/user`);
+  const response = await authInstace.get<UserTable>(`/api/user`);
 
-    return response.data;
-  } catch (error) {
-    console.error("User not found", error);
-    throw new Error("Failed to fetch user data");
-  }
+  return response.data;
 }
-
-// getUser();
 
 export async function verifyUserEmail({
   id,
@@ -48,21 +41,9 @@ export async function verifyUserEmail({
   expires,
   signature,
 }: verifyUserEmailProps) {
-  try {
-    const response = await authInstace.get(
-      `/api/email/verify/${id}/${hash}?expires=${expires}&signature=${signature}`
-    );
+  const response = await authInstace.get(
+    `/api/email/verify/${id}/${hash}?expires=${expires}&signature=${signature}`
+  );
 
-    if (response && response.data) {
-      return response.data; // Return data if present
-    }
-
-    throw new Error("Verification failed: Invalid response");
-  } catch (error) {
-    console.error("User not found", error);
-    throw new Error(
-      "Verification failed: " +
-        (error instanceof Error ? error.message : "Unknown error")
-    );
-  }
+  return response;
 }

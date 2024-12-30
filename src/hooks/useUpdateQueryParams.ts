@@ -1,19 +1,20 @@
-import { replace, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 
-type OperationType = "add" | "remove" | "clear-field";
+type OperationType = "add" | "fill-multiple-fields" | "clear-field";
 
 const useCustomUpdateQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const customUpdateQueryParams = (
-    field: string,
-    value: string,
-    operation: OperationType,
-    replace: Boolean = false
+    field?: string,
+    value?: string,
+    operation: OperationType = "add",
+    replace: Boolean = false,
+    anyObject: { [key: string]: string[] } = {}
   ) => {
     const params = Object.fromEntries(searchParams);
 
-    if (operation === "add") {
+    if (operation === "add" && field && value) {
       if (!replace) {
         const existingValue = searchParams.get(field);
         if (existingValue) {
@@ -27,12 +28,17 @@ const useCustomUpdateQueryParams = () => {
       } else {
         params[field] = value;
       }
-    } else if (operation === "remove") {
-      delete params[field];
-    } else if (operation === "clear-field") {
+    } else if (operation === "fill-multiple-fields") {
+      for (let [field, values] of Object.entries(anyObject)) {
+        if (values.length > 0) {
+          params[field] = values.join(",");
+        } else {
+          delete params[field];
+        }
+      }
+    } else if (operation === "clear-field" && field) {
       delete params[field];
     }
-
     setSearchParams(params);
   };
 

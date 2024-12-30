@@ -1,10 +1,15 @@
 import React from "react";
 
-const MarkIcon: React.FC = () => {
+type IconProps = {
+  width?: string;
+  height?: string;
+};
+
+const MarkIcon: React.FC<IconProps> = ({ width, height }) => {
   return (
     <svg
-      width="21"
-      height="19"
+      width={width ? width : "21"}
+      height={height ? height : "19"}
       viewBox="0 0 21 19"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

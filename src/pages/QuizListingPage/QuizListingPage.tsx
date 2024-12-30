@@ -1,42 +1,48 @@
-import React, { useState } from "react";
-import Categories from "./components/Categories";
-import FilterButton from "./components/FilterButton";
-import QuizzesList from "./components/QuizzesList";
+import React from "react";
+import Categories from "./components/Categories/Categories";
+import FilterButton from "./components/FilterButton/FilterButton";
+import QuizzesList from "./components/QuizzesList/QuizzesList";
 import LoadMoreButton from "./components/LoadMoreButton";
-import Modal from "@/components/Modal";
-import MobileFilterModalBody from "./components/MobileFilterModalBody";
-import useWindowWidth from "@/hooks/useWindowWidth";
+import Modal from "@/components/Modal/Modal";
+import FilterBody from "./components/FilterBody/FilterBody";
+import useQuizListing from "./useQuizListing";
 
 const QuizListingPage: React.FC = () => {
-  const [page, setPage] = useState<number>(1);
-  const [hasNextPage, setHasNextPage] = useState<boolean>(true);
-  const [filterIsActive, setFilterIsActive] = useState<boolean>(false);
-
-  const windowWidth = useWindowWidth();
-
-  function handleLoadMoreClick() {
-    setPage((page) => page + 1);
-  }
-
-  function handleFilterActiveChange(isActive: boolean) {
-    setFilterIsActive(isActive);
-  }
+  const {
+    hasNextPage,
+    setHasNextPage,
+    filterIsActive,
+    windowWidth,
+    handleLoadMoreClick,
+    handleFilterActiveChange,
+    setFilterIsActive,
+    desktopFilterRef,
+    page,
+  } = useQuizListing();
 
   return (
     <div className="lg:px-24 px-4 pb-4">
       {filterIsActive && windowWidth < 1280 && (
         <Modal>
-          <MobileFilterModalBody setFilterIsActive={setFilterIsActive} />
+          <FilterBody type="mobile" setFilterIsActive={setFilterIsActive} />
         </Modal>
       )}
       <div
         className="flex flex-col lg:flex-row items-start lg:items-center justify-between
-      mt-4 gap-y-4"
+      mt-4 gap-y-4 relative"
       >
         <Categories />
         <div onClick={() => handleFilterActiveChange(true)}>
           <FilterButton />
         </div>
+        {filterIsActive && windowWidth >= 1280 && (
+          <div
+            ref={desktopFilterRef}
+            className="absolute bg-white bottom-0 z-30 right-0 translate-y-full opacityAnime"
+          >
+            <FilterBody type="desktop" setFilterIsActive={setFilterIsActive} />
+          </div>
+        )}
       </div>
       <QuizzesList setHasNextPage={setHasNextPage} page={page} />
       <div
