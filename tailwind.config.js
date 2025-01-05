@@ -17,6 +17,7 @@ export default {
         blue: "#4B69FD",
         black1: "#101828",
         black2: "#344054",
+        red: "#E72A8B",
       },
       height: {
         18: "4.5rem",

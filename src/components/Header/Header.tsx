@@ -19,6 +19,7 @@ const Header: React.FC = () => {
     modalIsOpen,
     headerInput,
     dispatch,
+    quizIsStarted,
   } = useHeader();
 
   return (
@@ -29,17 +30,19 @@ const Header: React.FC = () => {
         </Modal>
       )}
       <div
-        className="flex justify-between items-center 
+        className={`${
+          quizIsStarted ? "hidden" : ""
+        } flex justify-between items-center 
       px-4 lg:px-24 h-18 border-b-white1 border-b 
-      transition-all duration-400 sticky top-0 left-0 z-[40] bg-white"
+      transition-all duration-400 sticky top-0 left-0 z-[40] bg-white`}
       >
-        <div className="flex items-center gap-14">
+        <div className="flex items-center gap-6 lg:gap-14">
           <div onClick={() => navigate("/")}>
             <LogoIcon />
           </div>
           <Link
             to="/quizzes"
-            className="text-gray2 text-sm font-semibold hidden lg:inline-block cursor-pointer"
+            className="text-gray2 text-sm font-semibold inline-block cursor-pointer"
           >
             Quizzes
           </Link>

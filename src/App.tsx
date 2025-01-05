@@ -7,6 +7,7 @@ import {
   QuizListingPage,
   SignUpPage,
 } from "./pages";
+import { QuizPage } from "./pages/QuizPage";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/quizzes" element={<QuizListingPage />} />
+          <Route path="/quizzes/:id" element={<QuizPage />} />
         </Route>
       </Routes>
     </div>

@@ -1,3 +1,7 @@
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -47,4 +51,8 @@ body {
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
   -ms-overflow-style: none;
+}
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
 }

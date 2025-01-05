@@ -1,5 +1,11 @@
 import { authInstace, normalInstace } from "../../axios";
 
+export async function getQuiz(id: string) {
+  const response = await authInstace.get(`/api/quizzes/${id}`);
+
+  return response.data;
+}
+
 export async function getQuizzes(
   page: number,
   {
@@ -7,27 +13,34 @@ export async function getQuizzes(
     activeCategories,
     activeCompleted,
   }: {
-    activeLevels: string[];
+    activeLevels?: string[];
     activeCategories: string[];
-    activeCompleted: string[];
+    activeCompleted?: string[];
   },
   activeSortBy?: string,
-  activeDirection?: string
+  activeDirection?: string,
+  limit?: number,
+  except_id?: number
 ) {
   const params = new URLSearchParams();
 
-  const transformedActiveCompleted = activeCompleted.map((el) =>
+  const transformedActiveCompleted = activeCompleted?.map((el) =>
     el === "1" ? "completed" : "not-completed"
   );
+
   params.append("page", String(page));
 
-  if (activeLevels.length > 0) {
+  if (activeLevels && activeLevels.length > 0) {
     params.append("levels", activeLevels.join(","));
   }
   if (activeCategories.length > 0) {
     params.append("categories", activeCategories.join(","));
   }
-  if (activeCompleted.length > 0) {
+  if (
+    activeCompleted &&
+    activeCompleted.length > 0 &&
+    transformedActiveCompleted
+  ) {
     params.append("completed", transformedActiveCompleted.join(","));
   }
   if (activeSortBy) {
@@ -36,6 +49,14 @@ export async function getQuizzes(
 
   if (activeDirection) {
     params.append("direction", activeDirection);
+  }
+
+  if (limit) {
+    params.append("limit", String(limit));
+  }
+
+  if (except_id) {
+    params.append("except", String(except_id));
   }
 
   const response = await authInstace.get(`/api/quizzes?${params.toString()}`);

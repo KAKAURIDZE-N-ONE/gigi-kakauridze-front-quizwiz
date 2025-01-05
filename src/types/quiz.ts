@@ -35,7 +35,15 @@ export type PivotUser = {
 export type Question = {
   id: number;
   point: number;
+  question: string;
   quiz_id: number;
+  answers?: Answer[];
+};
+
+export type Answer = {
+  id: number;
+  answer: string;
+  is_correct: boolean;
 };
 
 export type Category = {
@@ -47,4 +55,9 @@ export type Category = {
   };
   created_at?: string | null;
   updated_at?: string | null;
+};
+
+export type SelectedAnswersCombination = {
+  question_id: number;
+  answer_ids: number[];
 };
