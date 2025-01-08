@@ -1,6 +1,6 @@
 import { getQuiz } from "@/services/apiQuiz";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
-import { Quiz } from "@/types";
+import { Quizz } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -38,7 +38,7 @@ export default function useStartedQuizz() {
     };
   }, [handleNavigation]);
 
-  const { data: quizz } = useQuery<Quiz>({
+  const { data: quizz } = useQuery<Quizz>({
     queryKey: ["quiz", id],
     queryFn: () => getQuiz(String(id)),
   });

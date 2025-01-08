@@ -13,4 +13,5 @@ export type Props = Hook & {
   level: Level;
   id: number;
   type?: "similar";
+  direction?: "vertical" | "horizontal";
 };

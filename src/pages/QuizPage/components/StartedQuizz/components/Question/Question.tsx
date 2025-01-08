@@ -21,7 +21,7 @@ const Question: React.FC<Props> = ({ question, index }) => {
     <div className="flex flex-col gap-y-[1.3rem]">
       <div className="flex items-center gap-4">
         <h3 className="text-blue font-semibold text-sm">Question - {index}</h3>
-        <div className="w-[1px] h-[10px] bg-[#D0D5DD]"></div>
+        <div className="w-px h-[0.625rem] bg-[#D0D5DD]"></div>
         <h3 className="text-red font-semibold text-sm">
           Points - {question?.point}
         </h3>

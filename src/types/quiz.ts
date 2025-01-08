@@ -1,4 +1,4 @@
-export type Quiz = {
+export type Quizz = {
   created_at: string | null;
   description: string;
   level: Level;

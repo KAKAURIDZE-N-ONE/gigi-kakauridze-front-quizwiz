@@ -6,22 +6,25 @@ export async function getQuiz(id: string) {
   return response.data;
 }
 
-export async function getQuizzes(
-  page: number,
-  {
-    activeLevels,
-    activeCategories,
-    activeCompleted,
-  }: {
-    activeLevels?: string[];
-    activeCategories: string[];
-    activeCompleted?: string[];
-  },
-  activeSortBy?: string,
-  activeDirection?: string,
-  limit?: number,
-  except_id?: number
-) {
+export async function getQuizzes({
+  page,
+  activeLevels,
+  activeCategories,
+  activeCompleted,
+  activeSortBy,
+  activeSortDirection,
+  limit,
+  except_id,
+}: {
+  page: number;
+  activeLevels?: string[];
+  activeCategories: string[];
+  activeCompleted?: string[];
+  activeSortBy?: string;
+  activeSortDirection?: string;
+  limit?: number;
+  except_id?: number;
+}) {
   const params = new URLSearchParams();
 
   const transformedActiveCompleted = activeCompleted?.map((el) =>
@@ -47,8 +50,8 @@ export async function getQuizzes(
     params.append("sortBy", activeSortBy);
   }
 
-  if (activeDirection) {
-    params.append("direction", activeDirection);
+  if (activeSortDirection) {
+    params.append("direction", activeSortDirection);
   }
 
   if (limit) {

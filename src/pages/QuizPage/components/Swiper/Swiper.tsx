@@ -30,6 +30,7 @@ const Swiper: React.FC<Props> = ({ quizzes, sliderWidth, direction }) => {
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <QuizCard
+                direction="horizontal"
                 type="similar"
                 questions={currentQuiz.questions}
                 title={currentQuiz.title}
@@ -50,7 +51,7 @@ const Swiper: React.FC<Props> = ({ quizzes, sliderWidth, direction }) => {
         <SwiperComponent
           modules={[Autoplay]}
           direction="vertical"
-          spaceBetween={50}
+          spaceBetween={40}
           slidesPerView={3}
           autoplay={{
             delay: 0,
@@ -64,6 +65,7 @@ const Swiper: React.FC<Props> = ({ quizzes, sliderWidth, direction }) => {
           {quizzes?.map((currentQuiz) => (
             <SwiperSlide key={currentQuiz.id}>
               <QuizCard
+                direction="vertical"
                 type="similar"
                 questions={currentQuiz.questions}
                 title={currentQuiz.title}

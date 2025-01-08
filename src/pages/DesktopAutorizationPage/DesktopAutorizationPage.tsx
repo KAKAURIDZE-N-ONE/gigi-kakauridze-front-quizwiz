@@ -18,7 +18,7 @@ const DesktopAutorizationPage: React.FC = () => {
         <div
           onClick={() => navigate(-1)}
           className="absolute left-[3.3125rem] 
-  top-[2.75rem] f"
+  top-[2.75rem]"
         >
           <ButtonBack />
         </div>

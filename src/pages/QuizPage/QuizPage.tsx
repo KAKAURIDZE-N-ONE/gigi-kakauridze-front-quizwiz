@@ -8,7 +8,7 @@ const QuizPage: React.FC = () => {
   const quizIsStarted = useSelector(getQuizIsStarted);
 
   return (
-    <div className="overflow-hidden">
+    <div className="">
       {quizIsStarted ? <StartedQuizz /> : <QuizDescription />}
     </div>
   );

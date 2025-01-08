@@ -20,6 +20,7 @@ const QuizCard: React.FC<Props> = ({
   level,
   id,
   type,
+  direction,
 }) => {
   const { totalAvailablePoints, isFilledByUser } = useQuizCard({
     questions,
@@ -27,25 +28,29 @@ const QuizCard: React.FC<Props> = ({
   });
 
   return (
-    <div className={`${type === "similar" ? "px-4 " : ""} `}>
+    <div
+      className={`${
+        type === "similar" && direction === "horizontal" ? "px-4 " : ""
+      } `}
+    >
       <Link
         to={`/quizzes/${id}`}
         className={`pt-6 px-6 pb-8 flex gap-8 flex-col
-        shadow-lg ${
-          type === "similar"
-            ? `border border-white3 rounded-lg bg-[#F8F8F9]
+         ${
+           type === "similar"
+             ? `border border-white3 rounded-lg bg-[#F8F8F9]
             hover:border-black transition-all duration-200`
-            : ""
-        }`}
+             : " shadow-lg"
+         }`}
       >
         <div
           style={{ backgroundImage: `url(${image})`, aspectRatio: 1.4444 }}
           className="bg-cover bg-no-repeat bg-center"
         ></div>
         <div className="flex flex-col gap-y-[1.25rem]">
-          <div className="flex flex-col gap-y-3">
+          <div className="flex flex-col gap-y-3 overflow-hidden">
             <CategoryItems categories={categories} />
-            <h4 className="font-semibold text-2xl">{title}</h4>
+            <h4 className="font-semibold text-2xl text-nowrap">{title}</h4>
           </div>
           <div className="flex gap-[1.375rem] items-center">
             <div className="flex gap-3 items-center">

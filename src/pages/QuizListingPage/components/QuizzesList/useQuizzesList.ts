@@ -39,13 +39,15 @@ export default function useQuizzesList(
       activeSortBy?.direction,
     ],
     queryFn: () => {
-      return getQuizzes(
+      return getQuizzes({
+        activeSortDirection: activeSortBy?.direction,
+        activeSortBy: activeSortBy?.tableName,
         page,
-        { activeLevels, activeCategories, activeCompleted },
-        activeSortBy?.tableName,
-        activeSortBy?.direction,
-        QUIZZES_LIMIT
-      );
+        activeLevels,
+        activeCategories,
+        activeCompleted,
+        limit: QUIZZES_LIMIT,
+      });
     },
   });
 

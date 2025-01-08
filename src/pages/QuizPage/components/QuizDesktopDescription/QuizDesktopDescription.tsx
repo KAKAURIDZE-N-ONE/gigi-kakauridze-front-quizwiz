@@ -80,7 +80,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
               )}
             </div>
           </div>
-          <div className="relative w-full">
+          <div className="relative w-full max-w-[40rem]">
             <div
               style={{
                 backgroundImage: `url(${quizz?.image})`,
@@ -91,13 +91,15 @@ const QuizDesktopDescription: React.FC<Props> = ({
             ></div>
           </div>
         </div>
-        <div className="min-w-[24rem]">
-          <Swiper
-            direction="vertical"
-            quizzes={similarQuizzes}
-            sliderWidth={100}
-          />
-        </div>
+        {similarQuizzes && (
+          <div className="min-w-[24rem] ">
+            <Swiper
+              direction="vertical"
+              quizzes={similarQuizzes}
+              sliderWidth={100}
+            />
+          </div>
+        )}
       </div>
     </div>
   );
