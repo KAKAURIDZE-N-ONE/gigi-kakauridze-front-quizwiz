@@ -10,6 +10,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { sortByItems } from "../../config";
+import { QUIZZES_LIMIT } from "./config";
 
 export default function useQuizzesList(
   page: number,
@@ -31,21 +32,23 @@ export default function useQuizzesList(
     queryKey: [
       "quizzes",
       page,
-      JSON.stringify(activeLevels),
-      JSON.stringify(activeCategories),
-      JSON.stringify(activeCompleted),
+      activeLevels,
+      activeCategories,
+      activeCompleted,
       activeSortBy?.tableName,
       activeSortBy?.direction,
     ],
     queryFn: () => {
-      return getQuizzes(
+      return getQuizzes({
+        activeSortDirection: activeSortBy?.direction,
+        activeSortBy: activeSortBy?.tableName,
         page,
-        { activeLevels, activeCategories, activeCompleted },
-        activeSortBy?.tableName,
-        activeSortBy?.direction
-      );
+        activeLevels,
+        activeCategories,
+        activeCompleted,
+        limit: QUIZZES_LIMIT,
+      });
     },
-    refetchOnWindowFocus: false,
   });
 
   useEffect(() => {

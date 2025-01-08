@@ -1,41 +1,65 @@
 import { authInstace, normalInstace } from "../../axios";
 
-export async function getQuizzes(
-  page: number,
-  {
-    activeLevels,
-    activeCategories,
-    activeCompleted,
-  }: {
-    activeLevels: string[];
-    activeCategories: string[];
-    activeCompleted: string[];
-  },
-  activeSortBy?: string,
-  activeDirection?: string
-) {
+export async function getQuiz(id: string) {
+  const response = await authInstace.get(`/api/quizzes/${id}`);
+
+  return response.data;
+}
+
+export async function getQuizzes({
+  page,
+  activeLevels,
+  activeCategories,
+  activeCompleted,
+  activeSortBy,
+  activeSortDirection,
+  limit,
+  except_id,
+}: {
+  page: number;
+  activeLevels?: string[];
+  activeCategories: string[];
+  activeCompleted?: string[];
+  activeSortBy?: string;
+  activeSortDirection?: string;
+  limit?: number;
+  except_id?: number;
+}) {
   const params = new URLSearchParams();
 
-  const transformedActiveCompleted = activeCompleted.map((el) =>
+  const transformedActiveCompleted = activeCompleted?.map((el) =>
     el === "1" ? "completed" : "not-completed"
   );
+
   params.append("page", String(page));
 
-  if (activeLevels.length > 0) {
+  if (activeLevels && activeLevels.length > 0) {
     params.append("levels", activeLevels.join(","));
   }
   if (activeCategories.length > 0) {
     params.append("categories", activeCategories.join(","));
   }
-  if (activeCompleted.length > 0) {
+  if (
+    activeCompleted &&
+    activeCompleted.length > 0 &&
+    transformedActiveCompleted
+  ) {
     params.append("completed", transformedActiveCompleted.join(","));
   }
   if (activeSortBy) {
     params.append("sortBy", activeSortBy);
   }
 
-  if (activeDirection) {
-    params.append("direction", activeDirection);
+  if (activeSortDirection) {
+    params.append("direction", activeSortDirection);
+  }
+
+  if (limit) {
+    params.append("limit", String(limit));
+  }
+
+  if (except_id) {
+    params.append("except", String(except_id));
   }
 
   const response = await authInstace.get(`/api/quizzes?${params.toString()}`);

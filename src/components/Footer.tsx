@@ -1,12 +1,15 @@
 import React from "react";
 import Logo from "../assets/svgs/LogoIcon";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { getQuizIsStarted } from "@/store/slices/quizSlice";
 
 const Footer: React.FC = () => {
   const navigate = useNavigate();
+  const quizzIsStarted = useSelector(getQuizIsStarted);
 
   return (
-    <div className="lg:h-[16.25rem]">
+    <div className={`${quizzIsStarted ? "hidden" : ""} lg:h-[16.25rem]`}>
       <div
         className="h-30  relative z-10 bg-white lg:flex
       border-b border-b-white1 border-t  border-t-white1 lg:gap-[4.5rem] lg:px-24"
@@ -50,6 +53,10 @@ const Footer: React.FC = () => {
             © 2024 QW. All rights reserved
           </p>
         </div>
+        <div
+          className="h-96 left-0 bottom-0 translate-y-full 
+      bg-red-300 absolute"
+        ></div>
       </div>
       <div
         className="h-[4.2rem] pr-28 items-center hidden 

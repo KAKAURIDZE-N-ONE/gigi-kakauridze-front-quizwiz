@@ -11,4 +11,7 @@ export type Props = Hook & {
   image: string;
   total_filled: number;
   level: Level;
+  id: number;
+  type?: "similar";
+  direction?: "vertical" | "horizontal";
 };

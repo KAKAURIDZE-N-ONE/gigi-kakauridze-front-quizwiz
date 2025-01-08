@@ -1,10 +1,10 @@
-import useCustomUpdateQueryParams from "@/hooks/useUpdateQueryParams";
-import { Category } from "@/types";
 import React from "react";
 import { PropsType } from "./types";
+import { resetQuizzes, updatePage } from "@/store/slices/quizSlice";
+import useCategories from "./useCategories";
 
 const CategoryItem: React.FC<PropsType> = ({ category, isActive }) => {
-  const customUpdateQueryParams = useCustomUpdateQueryParams();
+  const { customUpdateQueryParams, dispatch } = useCategories();
 
   return (
     <li
@@ -19,6 +19,9 @@ const CategoryItem: React.FC<PropsType> = ({ category, isActive }) => {
         else {
           customUpdateQueryParams("categories", "", "clear-field");
         }
+
+        dispatch(resetQuizzes());
+        dispatch(updatePage(1));
       }}
       key={category.id}
       className={`${isActive ? "border-b-black" : "border-b-transparent"} 

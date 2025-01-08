@@ -1,12 +1,12 @@
 import React from "react";
 import Cover from "./components/Cover";
-import LeftArrow from "./svgs/LeftArrow";
 import SignUpModalBody from "@/components/SignUpModalBody/SignUpModalBody";
 import SignInModalBody from "@/components/SignInModalBody/SignInModalBody";
 import useDesktopAutorizationPage from "./useDesktopAutorizationPage";
+import ButtonBack from "@/components/ButtonBack";
 
 const DesktopAutorizationPage: React.FC = () => {
-  const { navigate, pathname } = useDesktopAutorizationPage();
+  const { pathname, navigate } = useDesktopAutorizationPage();
 
   return (
     <div
@@ -17,11 +17,10 @@ const DesktopAutorizationPage: React.FC = () => {
       <div className="w-1/2  h-full relative">
         <div
           onClick={() => navigate(-1)}
-          className="absolute left-[3.3125rem] cursor-pointer
-        top-[2.75rem] flex gap-[0.5625rem] items-center"
+          className="absolute left-[3.3125rem] 
+  top-[2.75rem]"
         >
-          <LeftArrow />
-          <p className="text-gray font-medium text-sm">Back</p>
+          <ButtonBack />
         </div>
         <div className="flex flex-col justify-center h-full">
           <div className="px-[5.125rem]">
