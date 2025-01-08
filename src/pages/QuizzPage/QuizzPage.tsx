@@ -4,7 +4,7 @@ import { StartedQuizz } from "./components/StartedQuizz";
 import { useSelector } from "react-redux";
 import { getQuizIsStarted } from "@/store/slices/quizSlice";
 
-const QuizPage: React.FC = () => {
+const QuizzPage: React.FC = () => {
   const quizIsStarted = useSelector(getQuizIsStarted);
 
   return (
@@ -14,4 +14,4 @@ const QuizPage: React.FC = () => {
   );
 };
 
-export default QuizPage;
+export default QuizzPage;
