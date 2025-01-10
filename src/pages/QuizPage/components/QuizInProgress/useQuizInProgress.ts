@@ -1,15 +1,20 @@
+import useScrollTo from "@/hooks/useScrollTo";
 import { getQuiz } from "@/services/apiQuiz";
-import { updateQuizIsStarted } from "@/store/slices/quizSlice";
-import { Quizz } from "@/types";
+import { getQuizFinished, updateQuizIsStarted } from "@/store/slices/quizSlice";
+import { Quiz } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
+import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 
-export default function useStartedQuizz() {
+export default function useQuizInProgress() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const quizFinished = useSelector(getQuizFinished);
+
+  useScrollTo({ dependency: [] });
 
   const handleNavigation = useCallback(() => {
     const userConfirmed = window.confirm(
@@ -38,10 +43,10 @@ export default function useStartedQuizz() {
     };
   }, [handleNavigation]);
 
-  const { data: quizz } = useQuery<Quizz>({
+  const { data: quiz } = useQuery<Quiz>({
     queryKey: ["quiz", id],
     queryFn: () => getQuiz(String(id)),
   });
 
-  return { quizz };
+  return { quiz, quizFinished };
 }

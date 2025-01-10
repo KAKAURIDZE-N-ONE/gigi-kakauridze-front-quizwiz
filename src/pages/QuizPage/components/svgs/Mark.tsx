@@ -1,10 +1,14 @@
+import { Props } from "@/types/svgs";
 import React from "react";
 
-const Mark: React.FC = () => {
+const Mark: React.FC<Props> = ({ size }) => {
   return (
     <svg
-      width="21"
-      height="20"
+      className={`${
+        size === "small"
+          ? "w-[0.875rem] h-[0.875rem]"
+          : "w-[1.3125rem] h-[1.25rem]"
+      } `}
       viewBox="0 0 21 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

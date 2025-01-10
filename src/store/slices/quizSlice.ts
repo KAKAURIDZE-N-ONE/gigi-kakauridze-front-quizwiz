@@ -1,13 +1,14 @@
 import { Quiz, SelectedAnswersCombination } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/store/store";
-import { replace } from "react-router-dom";
 
 interface QuizState {
   quizzes: Quiz[];
   page: number;
   quizIsStarted: boolean;
   selectedAnswers: SelectedAnswersCombination[];
+  timer: number | null;
+  quizFinished: Boolean;
 }
 
 const initialState: QuizState = {
@@ -15,12 +16,20 @@ const initialState: QuizState = {
   page: 1,
   quizIsStarted: false,
   selectedAnswers: [],
+  timer: null,
+  quizFinished: false,
 };
 
 const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
+    updateTimer(state, action) {
+      state.timer = action.payload;
+    },
+    updateQuizFinished(state, action) {
+      state.quizFinished = action.payload;
+    },
     addQuizzes(state, action: PayloadAction<Quiz[]>) {
       state.quizzes = [...state.quizzes, ...action.payload];
     },
@@ -85,7 +94,14 @@ export const {
   updatePage,
   updateQuizIsStarted,
   addSelectedAnswer,
+  updateTimer,
+  updateQuizFinished,
 } = quizSlice.actions;
+
+export const getTimer = (store: { quiz: QuizState }) => store.quiz.timer;
+
+export const getQuizFinished = (store: { quiz: QuizState }) =>
+  store.quiz.quizFinished;
 
 export const getQuizzesState = (store: { quiz: QuizState }) =>
   store.quiz.quizzes;

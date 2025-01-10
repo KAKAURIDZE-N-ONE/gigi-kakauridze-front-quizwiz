@@ -2,7 +2,7 @@ export type Quiz = {
   created_at: string | null;
   description: string;
   level: Level;
-  duration: string | null;
+  duration: number | null;
   id: number;
   image: string;
   questions: Question[];

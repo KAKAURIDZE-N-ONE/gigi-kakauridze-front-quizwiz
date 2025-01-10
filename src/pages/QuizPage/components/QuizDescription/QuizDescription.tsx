@@ -4,16 +4,13 @@ import { QuizMobileDescription } from "../QuizMobileDescription";
 import { QuizDesktopDescription } from "../QuizDesktopDescription";
 
 const QuizDescription: React.FC = () => {
-  const { navigate, quizz, similarQuizzesData } = useQuizDescription();
+  const { navigate, quiz, similarQuizzesData } = useQuizDescription();
 
   return (
     <div className="py-6">
-      <QuizMobileDescription
-        quizz={quizz}
-        similarQuizzes={similarQuizzesData}
-      />
+      <QuizMobileDescription quiz={quiz} similarQuizzes={similarQuizzesData} />
       <QuizDesktopDescription
-        quizz={quizz}
+        quiz={quiz}
         navigate={navigate}
         similarQuizzes={similarQuizzesData}
       />

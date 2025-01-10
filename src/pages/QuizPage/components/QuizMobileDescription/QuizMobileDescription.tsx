@@ -11,7 +11,7 @@ import { Swiper } from "../Swiper";
 import { useDispatch } from "react-redux";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
 
-const QuizMobileDescription: React.FC<Props> = ({ quizz, similarQuizzes }) => {
+const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const sliderWidth = useGetElementWidth(sliderRef);
   const dispatch = useDispatch();
@@ -20,20 +20,20 @@ const QuizMobileDescription: React.FC<Props> = ({ quizz, similarQuizzes }) => {
     <div className="inline-block lg:hidden w-full">
       <div className="flex flex-col gap-8 px-4 lg:px-24">
         <div className="flex flex-col gap-y-4">
-          <CategoryItems categories={quizz?.categories || []} />
+          <CategoryItems categories={quiz?.categories || []} />
           <div className="flex flex-col gap-y-4">
             <h1
               className="font-bold text-[2.5rem] raleway
             leading-[2.8rem]"
             >
-              {quizz?.title}
+              {quiz?.title}
             </h1>
             <p className="text-sm text-gray font-semibold">
-              {quizz?.description}
+              {quiz?.description}
             </p>
             <div
               style={{
-                backgroundImage: `url(${quizz?.image})`,
+                backgroundImage: `url(${quiz?.image})`,
                 aspectRatio: 1.4379,
               }}
               className="bg-cover bg-no-repeat bg-center
@@ -46,13 +46,13 @@ const QuizMobileDescription: React.FC<Props> = ({ quizz, similarQuizzes }) => {
             <li className="flex gap-2 items-center pb-3 border-b border-b-white1">
               <Hash />
               <p className="text-gray font-semibold text-sm">
-                {quizz?.questions.length} Questions
+                {quiz?.questions.length} Questions
               </p>
             </li>
             <li className="flex gap-2 items-center py-3 border-b border-b-white1">
               <Points />
               <p className="text-gray font-semibold text-sm">
-                {quizz?.questions?.reduce(
+                {quiz?.questions?.reduce(
                   (sum, question) => sum + question.point,
                   0
                 )}{" "}
@@ -62,17 +62,17 @@ const QuizMobileDescription: React.FC<Props> = ({ quizz, similarQuizzes }) => {
             <li className="flex gap-2 items-center py-3 border-b border-b-white1">
               <Rocket />
               <p className="text-gray font-semibold text-sm">
-                {quizz?.total_filled} Plays
+                {quiz?.total_filled} Plays
               </p>
             </li>
             <li className="flex gap-2 items-center pt-3">
               <Time />
               <p className="text-gray font-semibold text-sm">
-                {timeFormatter(Number(quizz?.duration))}m
+                {quiz?.duration && timeFormatter({ seconds: quiz.duration })}m
               </p>
             </li>
           </ul>
-          {!quizz?.users?.at(0)?.id && (
+          {!quiz?.users?.at(0)?.id && (
             <button
               onClick={() => dispatch(updateQuizIsStarted(true))}
               className="h-[3.5rem] bg-blue text-white

@@ -27,7 +27,6 @@ const Swiper: React.FC<Props> = ({ quizzes, sliderWidth, direction }) => {
               style={{
                 minWidth: sliderWidth ? `${sliderWidth / 16}rem` : "100%",
               }}
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             >
               <QuizCard
                 direction="horizontal"

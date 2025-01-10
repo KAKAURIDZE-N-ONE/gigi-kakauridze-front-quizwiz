@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 
 const QuizDesktopDescription: React.FC<Props> = ({
   navigate,
-  quizz,
+  quiz,
   similarQuizzes,
 }) => {
   const dispatch = useDispatch();
@@ -27,12 +27,10 @@ const QuizDesktopDescription: React.FC<Props> = ({
         <div className="w-full flex gap-10 sticky top-24 left-0  h-10">
           <div className="flex flex-col gap-8 ">
             <div className="flex flex-col gap-4">
-              <h1 className="font-bold raleway text-[2.5rem]">
-                {quizz?.title}
-              </h1>
-              <CategoryItems categories={quizz?.categories || []} />
+              <h1 className="font-bold raleway text-[2.5rem]">{quiz?.title}</h1>
+              <CategoryItems categories={quiz?.categories || []} />
               <p className="text-gray text-sm font-semibold">
-                {quizz?.description}
+                {quiz?.description}
               </p>
             </div>
             <div className="flex flex-col gap-10">
@@ -40,14 +38,14 @@ const QuizDesktopDescription: React.FC<Props> = ({
                 <li className="flex items-center gap-2">
                   <Hash />
                   <p className="text-gray text-sm font-semibold">
-                    {quizz?.questions.length} Questions
+                    {quiz?.questions.length} Questions
                   </p>
                 </li>
                 <li className="w-[1px] h-3 bg-[#D0D5DD]"></li>
                 <li className="flex items-center gap-2">
                   <Points />
                   <p className="text-gray text-sm font-semibold">
-                    {quizz?.questions?.reduce(
+                    {quiz?.questions?.reduce(
                       (sum, question) => sum + question.point,
                       0
                     )}{" "}
@@ -58,18 +56,20 @@ const QuizDesktopDescription: React.FC<Props> = ({
                 <li className="flex items-center gap-2">
                   <Rocket />
                   <p className="text-gray text-sm font-semibold">
-                    {quizz?.total_filled} Plays
+                    {quiz?.total_filled} Plays
                   </p>
                 </li>
                 <li className="w-[1px] h-3 bg-[#D0D5DD]"></li>
                 <li className="flex items-center gap-2">
                   <Time />
                   <p className="text-gray text-sm font-semibold">
-                    {timeFormatter(Number(quizz?.duration))}m
+                    {quiz?.duration &&
+                      timeFormatter({ seconds: quiz.duration })}
+                    m
                   </p>
                 </li>
               </ul>
-              {!quizz?.users?.at(0)?.id && (
+              {!quiz?.users?.at(0)?.id && (
                 <button
                   onClick={() => dispatch(updateQuizIsStarted(true))}
                   className="bg-blue h-12 rounded-[0.625rem]
@@ -83,7 +83,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
           <div className="relative w-full max-w-[40rem]">
             <div
               style={{
-                backgroundImage: `url(${quizz?.image})`,
+                backgroundImage: `url(${quiz?.image})`,
                 aspectRatio: 1.1,
               }}
               className="bg-no-repeat bg-cover bg-center rounded-[1.25rem] 
