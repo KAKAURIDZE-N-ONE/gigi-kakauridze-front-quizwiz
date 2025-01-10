@@ -1,9 +1,9 @@
 import React from "react";
-import Mark from "../../../svgs/Mark";
-import Hash from "../../../QuizMobileDescription/svgs/Hash";
-import Points from "../../../QuizMobileDescription/svgs/Points";
-import Rocket from "../../../QuizMobileDescription/svgs/Rocket";
-import Time from "../../../QuizMobileDescription/svgs/Time";
+import Mark from "@/pages/QuizPage/components/svgs/Mark";
+import Hash from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Hash";
+import Points from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Points";
+import Rocket from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Rocket";
+import Time from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Time";
 import { Props } from "./types";
 import { timeFormatter } from "@/utils/timeFormatter";
 import useMobileTimer from "./useMobileTimer";

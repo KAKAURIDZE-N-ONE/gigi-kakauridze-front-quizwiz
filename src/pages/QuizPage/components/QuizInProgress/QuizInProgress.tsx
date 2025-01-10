@@ -1,12 +1,12 @@
 import React from "react";
 import useQuizInProgress from "./useQuizInProgress";
-import Mark from "../svgs/Mark";
+import Mark from "@/pages/QuizPage/components/svgs/Mark";
 import { CategoryItems } from "@/components/CategoryItems";
-import Hash from "../QuizMobileDescription/svgs/Hash";
-import Rocket from "../QuizMobileDescription/svgs/Rocket";
-import Time from "../QuizMobileDescription/svgs/Time";
+import Hash from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Hash";
+import Rocket from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Rocket";
+import Time from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Time";
 import { timeFormatter } from "@/utils/timeFormatter";
-import Points from "../QuizMobileDescription/svgs/Points";
+import Points from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Points";
 import { Question } from "./components/Question";
 import { MobileTimer } from "./components/MobileTimer";
 import DesktopTimer from "./components/DesktopTimer./DesktopTimer";
@@ -40,7 +40,7 @@ const QuizInProgress: React.FC = () => {
                 categories={quiz?.categories || []}
               />
             </div>
-            <div className="w-[1px] h-3 bg-[#D0D5DD]"></div>
+            <div className="w-px h-3 bg-[#D0D5DD]"></div>
             <div className="flex items-center gap-2">
               <Hash />
               <p className="text-gray font-semibold text-sm">
@@ -55,14 +55,14 @@ const QuizInProgress: React.FC = () => {
                 {quiz?.total_filled} Plays
               </p>
             </div>
-            <div className="w-[1px] h-3 bg-[#D0D5DD]"></div>
+            <div className="w-px h-3 bg-[#D0D5DD]"></div>
             <div className="flex items-center gap-2">
               <Time />
               <p className="text-gray font-semibold text-sm">
                 {quiz?.duration && timeFormatter({ seconds: quiz.duration })}m
               </p>
             </div>
-            <div className="w-[1px] h-3 bg-[#D0D5DD]"></div>
+            <div className="w-px h-3 bg-[#D0D5DD]"></div>
             <div className="flex items-center gap-2">
               <Points />
               <p className="text-gray font-semibold text-sm">
