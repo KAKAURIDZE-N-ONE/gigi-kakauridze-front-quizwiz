@@ -1,4 +1,5 @@
 import useOutsideClick from "@/hooks/useOutsideClick";
+import useScrollTo from "@/hooks/useScrollTo";
 import useWindowWidth from "@/hooks/useWindowWidth";
 import { getPage, updatePage } from "@/store/slices/quizSlice";
 import { useRef, useState } from "react";
@@ -16,6 +17,8 @@ export default function useQuizListing() {
   const windowWidth = useWindowWidth();
 
   useOutsideClick(desktopFilterRef, () => setFilterIsActive(false));
+
+  useScrollTo({});
 
   function handleLoadMoreClick() {
     dispatch(updatePage(page + 1));
