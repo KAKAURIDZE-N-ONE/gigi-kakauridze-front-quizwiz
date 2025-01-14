@@ -9,8 +9,10 @@ import { timeFormatter } from "@/utils/timeFormatter";
 import useMobileTimer from "./useMobileTimer";
 import { updateQuizFinished } from "@/store/slices/quizSlice";
 
-const MobileTimer: React.FC<Props> = ({ duration }) => {
-  const { timer, dispatch } = useMobileTimer({ duration });
+const MobileTimer: React.FC<Props> = ({ duration, quizId }) => {
+  const { timer, dispatch, id, mutate, selectedAnswers } = useMobileTimer({
+    duration,
+  });
 
   return (
     <div
@@ -57,13 +59,18 @@ const MobileTimer: React.FC<Props> = ({ duration }) => {
             </h3>
           </div>
         </div>
-        <button
-          className="h-[3.75rem] text-white rounded-[0.625rem]
+        {id && (
+          <button
+            className="h-[3.75rem] text-white rounded-[0.625rem]
         bg-blue font-semibold  mt-4"
-          onClick={() => dispatch(updateQuizFinished(true))}
-        >
-          Submit
-        </button>
+            onClick={async () => {
+              dispatch(updateQuizFinished(true));
+              mutate({ quizId, selectedAnswers });
+            }}
+          >
+            Submit
+          </button>
+        )}
         <div className="h-px bg-white3 mt-4"></div>
       </div>
     </div>

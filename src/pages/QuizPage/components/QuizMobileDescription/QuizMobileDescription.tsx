@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React from "react";
 import { Props } from "./props";
 import { CategoryItems } from "@/components/CategoryItems";
 import Hash from "./svgs/Hash";
@@ -6,15 +6,12 @@ import Points from "./svgs/Points";
 import Rocket from "./svgs/Rocket";
 import Time from "./svgs/Time";
 import { timeFormatter } from "@/utils/timeFormatter";
-import useGetElementWidth from "@/hooks/useGetElementWidth";
 import { Swiper } from "../Swiper";
-import { useDispatch } from "react-redux";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
+import useQuizMobileDescription from "./useQuizMobileDescription";
 
 const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-  const sliderWidth = useGetElementWidth(sliderRef);
-  const dispatch = useDispatch();
+  const { sliderWidth, dispatch } = useQuizMobileDescription();
 
   return (
     <div className="inline-block lg:hidden w-full">
@@ -83,6 +80,10 @@ const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
             </button>
           )}
         </div>
+      </div>
+      <div className="px-4 mt-14 flex flex-col gap-4 ">
+        <h3 className="lg:px-24 font-semibold text-gray">Instructions</h3>
+        <p className="text-sm font-bold text-gray2">{quiz?.instructions}</p>
       </div>
       <div className="mt-20 flex flex-col gap-4 mb-10">
         <h3 className="px-4 lg:px-24 font-semibold text-gray">

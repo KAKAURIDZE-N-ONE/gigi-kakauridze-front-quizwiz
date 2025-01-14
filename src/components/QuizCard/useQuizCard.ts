@@ -1,6 +1,6 @@
-import { HookType } from "./types";
+import { Hook } from "./types";
 
-export default function useQuizCard({ questions, userDetails }: HookType) {
+export default function useQuizCard({ questions, userDetails }: Hook) {
   const isFilledByUser = userDetails !== undefined;
 
   const totalAvailablePoints = isFilledByUser

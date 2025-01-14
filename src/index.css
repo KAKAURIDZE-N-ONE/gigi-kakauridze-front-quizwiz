@@ -56,3 +56,16 @@ body {
 .swiper-wrapper {
   transition-timing-function: linear !important;
 }
+
+.loader {
+  animation: infinite loader 1000ms linear;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

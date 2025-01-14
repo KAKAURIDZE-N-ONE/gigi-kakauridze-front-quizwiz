@@ -1,3 +1,4 @@
+import { SelectedAnswersCombination } from "@/types";
 import { authInstace, normalInstace } from "../../axios";
 
 export async function getQuiz(id: string) {
@@ -77,4 +78,18 @@ export async function getLevels() {
   const response = await normalInstace.get("/api/levels");
 
   return response.data;
+}
+
+export async function submitQuiz({
+  quizId,
+  selectedAnswers,
+}: {
+  quizId: number;
+  selectedAnswers: SelectedAnswersCombination[];
+}) {
+  const response = await authInstace.post(`/api/quizzes/${quizId}`, {
+    selectedAnswers,
+  });
+
+  return response;
 }

@@ -18,11 +18,17 @@ const QuizInProgress: React.FC = () => {
 
   return (
     <>
-      {quiz?.duration && <MobileTimer duration={quiz.duration} />}
+      {quiz?.duration && (
+        <MobileTimer quizId={quiz?.id} duration={quiz.duration} />
+      )}
       <div className="px-4 lg:px-[5.875rem] mt-4 lg:mt-8 pb-14">
-        {quizFinished && (
+        {quizFinished && quiz && (
           <Modal>
-            <ResultModalBody />
+            <ResultModalBody
+              questionsQuantity={quiz.questions.length}
+              name={quiz.title}
+              level={quiz.level}
+            />
           </Modal>
         )}
         <h1

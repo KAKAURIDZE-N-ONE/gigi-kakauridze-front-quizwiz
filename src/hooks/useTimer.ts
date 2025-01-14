@@ -23,7 +23,7 @@ export default function useTimer({ duration }: Props) {
   }, [duration]);
 
   useEffect(() => {
-    if (timer && !quizIsFinished) {
+    if (timer !== null && !quizIsFinished) {
       if (timer > 0) {
         const interval = setInterval(
           () => dispatch(updateTimer(timer - 1)),
@@ -31,9 +31,9 @@ export default function useTimer({ duration }: Props) {
         );
 
         return () => clearInterval(interval);
+      } else {
+        dispatch(updateQuizFinished(true));
       }
-    } else {
-      dispatch(updateQuizFinished(true));
     }
   }, [timer]);
 
