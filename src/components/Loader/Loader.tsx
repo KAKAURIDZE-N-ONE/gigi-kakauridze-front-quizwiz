@@ -3,7 +3,7 @@ import React from "react";
 const Loader: React.FC = () => {
   return (
     <div
-      className={`loader w-7 h-7 bg-blue
+      className={`animate-spin w-7 h-7 bg-blue
       rounded-full relative flex items-center 
       justify-center overflow-hidden
   `}

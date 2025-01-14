@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function useResultModalBody() {
   const userResult = useSelector(getUserResult);
-  const isLoading = false;
+  const isLoading = true;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
