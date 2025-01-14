@@ -1,6 +1,7 @@
 export type Quiz = {
   created_at: string | null;
   description: string;
+  instructions: string;
   level: Level;
   duration: number | null;
   id: number;
@@ -60,4 +61,9 @@ export type Category = {
 export type SelectedAnswersCombination = {
   question_id: number;
   answer_ids: number[];
+};
+
+export type UploadResult = {
+  total_time: number | null;
+  user_result: number | null;
 };

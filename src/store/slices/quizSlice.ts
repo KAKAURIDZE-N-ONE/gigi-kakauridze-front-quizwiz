@@ -1,6 +1,6 @@
-import { Quiz, SelectedAnswersCombination } from "@/types";
+import { Quiz, SelectedAnswersCombination, UploadResult } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "@/store/store";
+import { RootState, store } from "@/store/store";
 
 interface QuizState {
   quizzes: Quiz[];
@@ -9,6 +9,7 @@ interface QuizState {
   selectedAnswers: SelectedAnswersCombination[];
   timer: number | null;
   quizFinished: Boolean;
+  uploadResult: UploadResult;
 }
 
 const initialState: QuizState = {
@@ -18,12 +19,19 @@ const initialState: QuizState = {
   selectedAnswers: [],
   timer: null,
   quizFinished: false,
+  uploadResult: {
+    total_time: null,
+    user_result: null,
+  },
 };
 
 const quizSlice = createSlice({
   name: "quiz",
   initialState,
   reducers: {
+    updateUserResult(state, action: PayloadAction<UploadResult>) {
+      state.uploadResult = action.payload;
+    },
     updateTimer(state, action) {
       state.timer = action.payload;
     },
@@ -96,6 +104,7 @@ export const {
   addSelectedAnswer,
   updateTimer,
   updateQuizFinished,
+  updateUserResult,
 } = quizSlice.actions;
 
 export const getTimer = (store: { quiz: QuizState }) => store.quiz.timer;
@@ -115,5 +124,11 @@ export const getSelectedAnswers = (store: RootState, question_id: number) =>
   store.quiz.selectedAnswers.find(
     (answer) => answer.question_id === question_id
   );
+
+export const getAllSelectedAnswers = (store: { quiz: QuizState }) =>
+  store.quiz.selectedAnswers;
+
+export const getUserResult = (store: { quiz: QuizState }) =>
+  store.quiz.uploadResult;
 
 export default quizSlice.reducer;

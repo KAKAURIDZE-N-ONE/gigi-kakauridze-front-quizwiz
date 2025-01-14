@@ -70,7 +70,9 @@ const QuizCard: React.FC<Props> = ({
               <h4 className="font-semibold text-sm text-black1">Total time</h4>
               <h5 className="text-sm text-gray2">
                 {isFilledByUser && userDetails
-                  ? `${timeFormatter(userDetails?.total_time)} Minute`
+                  ? `${timeFormatter({
+                      seconds: userDetails?.total_time,
+                    })} Minute`
                   : "N/A"}
               </h5>
             </div>
