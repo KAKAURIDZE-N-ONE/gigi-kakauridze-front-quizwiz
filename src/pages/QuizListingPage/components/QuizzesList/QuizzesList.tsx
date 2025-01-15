@@ -7,7 +7,6 @@ const QuizzesList: React.FC<PropsType> = ({ page, setHasNextPage }) => {
   const { quizzes, isPending } = useQuizzesList(page, setHasNextPage);
   return (
     <>
-      {/* {isPending && <Modal>dasda</Modal>} */}
       {!isPending && (
         <div className="grid grid-cols-1  lg:grid-cols-3 gap-8 lg:mt-10 mt-5">
           {quizzes?.map((quiz: Quiz) => {

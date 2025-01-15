@@ -1,15 +1,16 @@
+import queryKeys from "@/config/queryKeys";
 import { getCategoriesLength } from "@/services/apiCategories";
 import { getQuizzesQuantity } from "@/services/apiQuiz";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useHero() {
   const { data: categoriesData } = useQuery({
-    queryKey: ["categories-count"],
+    queryKey: [queryKeys.categoriesCount],
     queryFn: getCategoriesLength,
   });
 
   const { data: quizzesData } = useQuery({
-    queryKey: ["quizzes-count"],
+    queryKey: [queryKeys.quizzesCount],
     queryFn: getQuizzesQuantity,
   });
 

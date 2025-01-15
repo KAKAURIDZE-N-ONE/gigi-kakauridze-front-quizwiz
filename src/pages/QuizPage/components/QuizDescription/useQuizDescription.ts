@@ -1,3 +1,4 @@
+import queryKeys from "@/config/queryKeys";
 import useScrollTo from "@/hooks/useScrollTo";
 import { getQuiz, getQuizzes } from "@/services/apiQuiz";
 import { Quiz } from "@/types";
@@ -12,12 +13,12 @@ export default function useQuizDescription() {
   useScrollTo({ dependency: [id] });
 
   const { data: quiz } = useQuery<Quiz>({
-    queryKey: ["quiz", id],
+    queryKey: [queryKeys.quiz, id],
     queryFn: () => getQuiz(String(id)),
   });
 
   const { data: similarQuizzes } = useQuery({
-    queryKey: ["similarQuizzes", quiz?.id],
+    queryKey: [queryKeys.similarQuizzes, quiz?.id],
     queryFn: () =>
       getQuizzes({
         page: 1,

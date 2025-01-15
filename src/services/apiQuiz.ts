@@ -32,7 +32,7 @@ export async function getQuizzes({
   activeSortDirection?: string;
   limit?: number;
   except_id?: number;
-  search: string | undefined;
+  search?: string | undefined;
 }) {
   const params = new URLSearchParams();
 

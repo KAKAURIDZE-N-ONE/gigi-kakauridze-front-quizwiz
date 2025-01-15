@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { sortByItems } from "../../config";
 import { QUIZZES_LIMIT } from "./config";
+import queryKeys from "@/config/queryKeys";
 
 export default function useQuizzesList(
   page: number,
@@ -31,7 +32,7 @@ export default function useQuizzesList(
 
   const { data, isPending, error } = useQuery({
     queryKey: [
-      "quizzes",
+      queryKeys.quizzes,
       page,
       activeLevels,
       activeCategories,
