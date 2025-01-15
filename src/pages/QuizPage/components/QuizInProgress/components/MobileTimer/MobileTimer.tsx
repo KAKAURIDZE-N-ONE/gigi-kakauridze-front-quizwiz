@@ -7,11 +7,15 @@ import Time from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Time";
 import { Props } from "./types";
 import { timeFormatter } from "@/utils/timeFormatter";
 import useMobileTimer from "./useMobileTimer";
-import { updateQuizFinished } from "@/store/slices/quizSlice";
+import {
+  resetSelectedAnswers,
+  updateQuizFinished,
+} from "@/store/slices/quizSlice";
 
 const MobileTimer: React.FC<Props> = ({ duration, quizId }) => {
   const { timer, dispatch, id, mutate, selectedAnswers } = useMobileTimer({
     duration,
+    quizId,
   });
 
   return (
@@ -63,9 +67,10 @@ const MobileTimer: React.FC<Props> = ({ duration, quizId }) => {
           <button
             className="h-[3.75rem] text-white rounded-[0.625rem]
         bg-blue font-semibold  mt-4"
-            onClick={async () => {
+            onClick={() => {
               dispatch(updateQuizFinished(true));
-              mutate({ quizId, selectedAnswers });
+              mutate({ quizId, selectedAnswers, timer: timer || duration });
+              dispatch(resetSelectedAnswers());
             }}
           >
             Submit

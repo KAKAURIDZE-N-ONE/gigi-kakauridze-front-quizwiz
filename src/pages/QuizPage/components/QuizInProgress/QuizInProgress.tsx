@@ -92,7 +92,7 @@ const QuizInProgress: React.FC = () => {
           {quiz?.duration && (
             <div className="mt-12 hidden lg:inline-block">
               <div className="sticky top-12 left-0">
-                <DesktopTimer duration={quiz.duration} />
+                <DesktopTimer quizId={quiz?.id} duration={quiz.duration} />
               </div>
             </div>
           )}

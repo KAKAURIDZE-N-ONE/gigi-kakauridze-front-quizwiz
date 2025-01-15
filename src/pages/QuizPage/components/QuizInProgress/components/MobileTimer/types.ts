@@ -5,4 +5,5 @@ export type Props = {
 
 export type HookProps = {
   duration: number;
+  quizId: number;
 };

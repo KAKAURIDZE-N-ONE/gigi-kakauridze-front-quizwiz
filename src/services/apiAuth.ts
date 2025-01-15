@@ -1,9 +1,6 @@
+import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
 import { authInstace } from "../../axios";
-import {
-  FormValues,
-  FormValuesLogin,
-  verifyUserEmail as verifyUserEmailProps,
-} from "@/types";
+import { FormValuesLogin, FormValues } from "@/types/formFields";
 import { UserTable } from "@/types/tables";
 
 export async function logIn(data: FormValuesLogin): Promise<any> {

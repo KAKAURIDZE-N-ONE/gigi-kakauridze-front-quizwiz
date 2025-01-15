@@ -65,5 +65,5 @@ export type SelectedAnswersCombination = {
 
 export type UploadResult = {
   total_time: number | null;
-  user_result: number | null;
+  correct_quantity: number | null;
 };

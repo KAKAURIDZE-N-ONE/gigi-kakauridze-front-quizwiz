@@ -1,8 +1,8 @@
 import useOutsideClick from "@/hooks/useOutsideClick";
 import useScrollTo from "@/hooks/useScrollTo";
 import useWindowWidth from "@/hooks/useWindowWidth";
-import { getPage, updatePage } from "@/store/slices/quizSlice";
-import { useRef, useState } from "react";
+import { getPage, resetQuizzes, updatePage } from "@/store/slices/quizSlice";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
@@ -19,6 +19,11 @@ export default function useQuizListing() {
   useOutsideClick(desktopFilterRef, () => setFilterIsActive(false));
 
   useScrollTo({});
+
+  useEffect(() => {
+    dispatch(updatePage(1));
+    dispatch(resetQuizzes());
+  }, []);
 
   function handleLoadMoreClick() {
     dispatch(updatePage(page + 1));

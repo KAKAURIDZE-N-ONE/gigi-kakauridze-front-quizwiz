@@ -5,7 +5,6 @@ import { PropsType } from "./types";
 
 const FilterButton: React.FC<PropsType> = ({ filled }) => {
   const { filtersQuantity } = useFilterButton();
-
   return (
     <div className="relative">
       <div

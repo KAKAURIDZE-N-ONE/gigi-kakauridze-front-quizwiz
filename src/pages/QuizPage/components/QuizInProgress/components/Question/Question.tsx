@@ -20,13 +20,15 @@ const Question: React.FC<Props> = ({ question, index }) => {
   return (
     <div className="flex flex-col gap-y-[1.3rem]">
       <div className="flex items-center gap-4">
-        <h3 className="text-blue font-semibold text-sm">Question - {index}</h3>
+        <h3 className="text-blue font-semibold text-sm">
+          Question - {index + 1}
+        </h3>
         <div className="w-px h-[0.625rem] bg-[#D0D5DD]"></div>
         <h3 className="text-red font-semibold text-sm">
           Points - {question?.point}
         </h3>
       </div>
-      <h2 className="text-lg font-bold leading-[2.3rem] -mt-2">
+      <h2 className="select-none text-lg font-bold leading-[2.3rem] -mt-2">
         {question?.question}
       </h2>
       {hasMultipleAnswers && (

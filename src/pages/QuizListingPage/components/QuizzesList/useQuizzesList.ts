@@ -23,6 +23,7 @@ export default function useQuizzesList(
   const activeCategories = useGetQueryParams("categories");
   const activeCompleted = useGetQueryParams("completed");
   const activeSortByName = useGetQueryParams("sortBy")[0];
+  const search = useGetQueryParams("search")?.at(0);
 
   const activeSortBy = sortByItems.find(
     (sortItem) => sortItem.name === activeSortByName
@@ -37,6 +38,7 @@ export default function useQuizzesList(
       activeCompleted,
       activeSortBy?.tableName,
       activeSortBy?.direction,
+      search,
     ],
     queryFn: () => {
       return getQuizzes({
@@ -47,6 +49,7 @@ export default function useQuizzesList(
         activeCategories,
         activeCompleted,
         limit: QUIZZES_LIMIT,
+        search,
       });
     },
   });
