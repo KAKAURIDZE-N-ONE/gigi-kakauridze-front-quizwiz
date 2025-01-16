@@ -1,6 +1,6 @@
-export const quizzes = "quizzes";
-export const user = "user";
-export const quiz = "quiz";
-export const similarQuizzes = "similar-quizzes";
-export const quizzesCount = "quizzes-count";
-export const categoriesCount = "categories-count";
+export const QUIZZES = "quizzes";
+export const USER = "user";
+export const QUIZ = "quiz";
+export const SIMILAR_QUIZZES = "similar-quizzes";
+export const QUIZZES_COUNT = "quizzes-count";
+export const CATEGORIES_COUNT = "categories-count";
