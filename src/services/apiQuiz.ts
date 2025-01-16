@@ -7,6 +7,12 @@ export async function getQuiz(id: string) {
   return response.data;
 }
 
+export async function getQuizzesQuantity() {
+  const response = await normalInstace.get("/api/quizzes/count");
+
+  return response.data;
+}
+
 export async function getQuizzes({
   page,
   activeLevels,
@@ -16,6 +22,7 @@ export async function getQuizzes({
   activeSortDirection,
   limit,
   except_id,
+  search,
 }: {
   page: number;
   activeLevels?: string[];
@@ -25,6 +32,7 @@ export async function getQuizzes({
   activeSortDirection?: string;
   limit?: number;
   except_id?: number;
+  search?: string | undefined;
 }) {
   const params = new URLSearchParams();
 
@@ -37,9 +45,11 @@ export async function getQuizzes({
   if (activeLevels && activeLevels.length > 0) {
     params.append("levels", activeLevels.join(","));
   }
+
   if (activeCategories.length > 0) {
     params.append("categories", activeCategories.join(","));
   }
+
   if (
     activeCompleted &&
     activeCompleted.length > 0 &&
@@ -47,6 +57,7 @@ export async function getQuizzes({
   ) {
     params.append("completed", transformedActiveCompleted.join(","));
   }
+
   if (activeSortBy) {
     params.append("sortBy", activeSortBy);
   }
@@ -63,13 +74,11 @@ export async function getQuizzes({
     params.append("except", String(except_id));
   }
 
+  if (search) {
+    params.append("search", search);
+  }
+
   const response = await authInstace.get(`/api/quizzes?${params.toString()}`);
-
-  return response.data;
-}
-
-export async function getCategories() {
-  const response = await normalInstace.get("/api/categories");
 
   return response.data;
 }
@@ -83,12 +92,15 @@ export async function getLevels() {
 export async function submitQuiz({
   quizId,
   selectedAnswers,
+  timer,
 }: {
   quizId: number;
   selectedAnswers: SelectedAnswersCombination[];
+  timer: number;
 }) {
   const response = await authInstace.post(`/api/quizzes/${quizId}`, {
     selectedAnswers,
+    timer,
   });
 
   return response;

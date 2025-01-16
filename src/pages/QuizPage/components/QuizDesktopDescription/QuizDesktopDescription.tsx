@@ -18,6 +18,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
 }) => {
   const dispatch = useDispatch();
 
+  const isSubmitted = !quiz?.users?.at(0)?.id;
   return (
     <div className="hidden px-24 lg:flex flex-col gap-6 h-[100rem]">
       <div onClick={() => navigate(-1)}>
@@ -73,7 +74,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
                       </p>
                     </li>
                   </ul>
-                  {!quiz?.users?.at(0)?.id && (
+                  {isSubmitted ? (
                     <button
                       onClick={() => dispatch(updateQuizIsStarted(true))}
                       className="bg-blue h-12 rounded-[0.625rem]
@@ -81,6 +82,8 @@ const QuizDesktopDescription: React.FC<Props> = ({
                     >
                       Start quizz
                     </button>
+                  ) : (
+                    <div className="h-12"></div>
                   )}
                 </div>
               </div>

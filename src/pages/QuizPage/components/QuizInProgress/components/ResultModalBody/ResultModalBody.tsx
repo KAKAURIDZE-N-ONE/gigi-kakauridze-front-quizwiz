@@ -11,11 +11,11 @@ const ResultModalBody: React.FC<Props> = ({
   level,
   questionsQuantity,
 }) => {
-  const { isLoading, handleNavigateHome, userResult } = useResultModalBody();
+  const { isPending, handleNavigateHome, userResult } = useResultModalBody();
 
   return (
     <div className="bg-white w-full mx-4 rounded-xl pt-14 pb-6 relative max-w-[25rem]">
-      {isLoading && (
+      {isPending && (
         <div
           className=" gap-5 w-full flex 
         flex-col"
@@ -46,7 +46,7 @@ const ResultModalBody: React.FC<Props> = ({
           </div>
         </div>
       )}
-      {!isLoading && (
+      {!isPending && (
         <div className="flex flex-col gap-5">
           <div
             onClick={handleNavigateHome}
@@ -95,8 +95,8 @@ const ResultModalBody: React.FC<Props> = ({
                 <div className="flex flex-col gap-2 pb-3 border-b border-white3">
                   <h3 className="font-medium text-sm text-black2">Mistakes</h3>
                   <p className="font-medium text-sm">
-                    {userResult?.user_result
-                      ? questionsQuantity - userResult.user_result
+                    {userResult?.correct_quantity
+                      ? questionsQuantity - userResult.correct_quantity
                       : questionsQuantity}
                   </p>
                 </div>
@@ -105,7 +105,7 @@ const ResultModalBody: React.FC<Props> = ({
                     Wright answers
                   </h3>
                   <p className="font-medium text-sm">
-                    {userResult?.user_result}
+                    {userResult?.correct_quantity}
                   </p>
                 </div>
               </div>

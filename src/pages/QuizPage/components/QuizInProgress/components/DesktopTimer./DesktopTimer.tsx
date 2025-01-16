@@ -2,10 +2,16 @@ import React from "react";
 import { Props } from "./types";
 import { timeFormatter } from "@/utils/timeFormatter";
 import useDesktopTimer from "./useDesktopTimer";
-import { updateQuizFinished } from "@/store/slices/quizSlice";
+import {
+  resetSelectedAnswers,
+  updateQuizFinished,
+} from "@/store/slices/quizSlice";
 
-const DesktopTimer: React.FC<Props> = ({ duration }) => {
-  const { timer, dispatch } = useDesktopTimer({ duration });
+const DesktopTimer: React.FC<Props> = ({ duration, quizId }) => {
+  const { timer, dispatch, mutate, selectedAnswers } = useDesktopTimer({
+    duration,
+    quizId,
+  });
 
   return (
     <div
@@ -31,7 +37,11 @@ const DesktopTimer: React.FC<Props> = ({ duration }) => {
       <button
         className="font-semibold rounded-[0.625rem] w-full h-12 
       bg-blue text-white mt-10"
-        onClick={() => dispatch(updateQuizFinished(true))}
+        onClick={() => {
+          dispatch(updateQuizFinished(true));
+          mutate({ quizId, selectedAnswers, timer: timer || duration });
+          dispatch(resetSelectedAnswers());
+        }}
       >
         Submit
       </button>

@@ -32,7 +32,7 @@ const Answer: React.FC<Props> = ({
     >
       <p
         className={`${isActive ? "text-blue" : "text-gray2"} 
-      text-sm font-normal`}
+      text-sm font-normal select-none`}
       >
         {answer.answer}
       </p>

@@ -1,4 +1,5 @@
-import { getCategories, getLevels } from "@/services/apiQuiz";
+import { getCategories } from "@/services/apiCategories";
+import { getLevels } from "@/services/apiQuiz";
 import { Category, Level } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";

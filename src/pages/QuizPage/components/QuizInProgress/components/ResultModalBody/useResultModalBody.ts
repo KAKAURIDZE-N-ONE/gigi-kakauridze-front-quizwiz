@@ -2,10 +2,11 @@ import { getUserResult, updateQuizIsStarted } from "@/store/slices/quizSlice";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import useSubmitQuiz from "../../hooks/useSubmitQuiz";
 
 export default function useResultModalBody() {
   const userResult = useSelector(getUserResult);
-  const isLoading = true;
+  const { isPending } = useSubmitQuiz();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -14,5 +15,5 @@ export default function useResultModalBody() {
     dispatch(updateQuizIsStarted(false));
   }
 
-  return { isLoading, handleNavigateHome, userResult };
+  return { isPending, handleNavigateHome, userResult };
 }

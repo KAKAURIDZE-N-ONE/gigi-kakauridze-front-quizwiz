@@ -1,6 +1,6 @@
 import { logIn } from "@/services/apiAuth";
 import { updateModalIsOpen } from "@/store/slices/modalSlice";
-import { FormValuesLogin } from "@/types";
+import { FormValuesLogin } from "@/types/formFields";
 import { useMutation } from "@tanstack/react-query";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";

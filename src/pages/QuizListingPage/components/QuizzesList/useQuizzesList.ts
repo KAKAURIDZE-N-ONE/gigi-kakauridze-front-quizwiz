@@ -11,6 +11,7 @@ import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { sortByItems } from "../../config";
 import { QUIZZES_LIMIT } from "./config";
+import { QUIZZES } from "@/config/queryKeys";
 
 export default function useQuizzesList(
   page: number,
@@ -23,6 +24,7 @@ export default function useQuizzesList(
   const activeCategories = useGetQueryParams("categories");
   const activeCompleted = useGetQueryParams("completed");
   const activeSortByName = useGetQueryParams("sortBy")[0];
+  const search = useGetQueryParams("search")?.at(0);
 
   const activeSortBy = sortByItems.find(
     (sortItem) => sortItem.name === activeSortByName
@@ -30,13 +32,14 @@ export default function useQuizzesList(
 
   const { data, isPending, error } = useQuery({
     queryKey: [
-      "quizzes",
+      QUIZZES,
       page,
       activeLevels,
       activeCategories,
       activeCompleted,
       activeSortBy?.tableName,
       activeSortBy?.direction,
+      search,
     ],
     queryFn: () => {
       return getQuizzes({
@@ -47,6 +50,7 @@ export default function useQuizzesList(
         activeCategories,
         activeCompleted,
         limit: QUIZZES_LIMIT,
+        search,
       });
     },
   });

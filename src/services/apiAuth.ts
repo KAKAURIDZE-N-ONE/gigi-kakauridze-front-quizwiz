@@ -1,3 +1,4 @@
+import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
 import { authInstace } from "../../axios";
 import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
 import {

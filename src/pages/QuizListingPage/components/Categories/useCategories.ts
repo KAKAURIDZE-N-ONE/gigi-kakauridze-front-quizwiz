@@ -1,5 +1,5 @@
 import useGetQueryParams from "@/hooks/useGetQueryParams";
-import { getCategories } from "@/services/apiQuiz";
+import { getCategories } from "@/services/apiCategories";
 import { useQuery } from "@tanstack/react-query";
 
 export default function useCategories() {

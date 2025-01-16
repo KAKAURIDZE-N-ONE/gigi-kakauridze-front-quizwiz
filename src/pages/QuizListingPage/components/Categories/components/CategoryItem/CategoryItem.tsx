@@ -20,8 +20,10 @@ const CategoryItem: React.FC<PropsType> = ({ category, isActive }) => {
           customUpdateQueryParams("categories", "", "clear-field");
         }
 
-        dispatch(resetQuizzes());
-        dispatch(updatePage(1));
+        if (!isActive) {
+          dispatch(resetQuizzes());
+          dispatch(updatePage(1));
+        }
       }}
       key={category.id}
       className={`${isActive ? "border-b-black" : "border-b-transparent"} 

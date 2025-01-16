@@ -1,7 +1,10 @@
 import React from "react";
-import Hero from "./components/Hero";
+import useScrollTo from "@/hooks/useScrollTo";
+import { Hero } from "./components/Hero";
 
 const LandingPage: React.FC = () => {
+  useScrollTo({});
+
   return (
     <div className="landing Page overflow-hidden">
       <Hero />

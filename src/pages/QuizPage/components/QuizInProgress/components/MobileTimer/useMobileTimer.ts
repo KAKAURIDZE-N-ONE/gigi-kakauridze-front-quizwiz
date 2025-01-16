@@ -6,9 +6,9 @@ import useSubmitQuiz from "../../hooks/useSubmitQuiz";
 import { useSelector } from "react-redux";
 import { getAllSelectedAnswers } from "@/store/slices/quizSlice";
 
-export default function useMobileTimer({ duration }: HookProps) {
+export default function useMobileTimer({ duration, quizId }: HookProps) {
   const dispatch = useDispatch();
-  const { timer } = useTimer({ duration });
+  const { timer } = useTimer({ duration, quizId });
   const { id } = useParams();
   const { mutate } = useSubmitQuiz();
   const selectedAnswers = useSelector(getAllSelectedAnswers);
