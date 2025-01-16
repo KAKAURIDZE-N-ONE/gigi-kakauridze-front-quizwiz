@@ -1,6 +1,7 @@
 import { useAuthentication } from "@/hooks/useAuthentication";
 import useLogOut from "@/hooks/useLogOut";
 import {
+  getMobileForgotPasswordIsOpen,
   getMobileSignInIsOpen,
   getMobileSignUpIsOpen,
   updateModalIsOpen,
@@ -12,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 export default function useAutorizationModalBody() {
   const mobileSignInIsOpen = useSelector(getMobileSignInIsOpen);
   const mobileSignUpIsOpen = useSelector(getMobileSignUpIsOpen);
+  const mobileForgotPasswordIsOpen = useSelector(getMobileForgotPasswordIsOpen);
 
   const { isAuthenticated, user } = useAuthentication();
 
@@ -36,5 +38,6 @@ export default function useAutorizationModalBody() {
     navigate,
     mobileSignInIsOpen,
     mobileSignUpIsOpen,
+    mobileForgotPasswordIsOpen,
   };
 }

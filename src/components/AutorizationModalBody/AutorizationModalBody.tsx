@@ -8,6 +8,7 @@ import SignUpModalBody from "../SignUpModalBody/SignUpModalBody";
 import SignInModalBody from "../SignInModalBody/SignInModalBody";
 import InputsModal from "../InputsModal/InputsModal";
 import useAutorizationModalBody from "./useAutorizationModalBody";
+import { ForgotPasswordModalBody } from "../ForgotPasswordModalBody.tsx";
 
 const AutorizationModalBody: React.FC = () => {
   const {
@@ -18,7 +19,9 @@ const AutorizationModalBody: React.FC = () => {
     navigate,
     mobileSignInIsOpen,
     mobileSignUpIsOpen,
+    mobileForgotPasswordIsOpen,
   } = useAutorizationModalBody();
+
   return (
     <>
       {mobileSignUpIsOpen && (
@@ -31,9 +34,14 @@ const AutorizationModalBody: React.FC = () => {
           <SignInModalBody type="mobile" />
         </InputsModal>
       )}
+      {mobileForgotPasswordIsOpen && (
+        <InputsModal>
+          <ForgotPasswordModalBody type="mobile" />
+        </InputsModal>
+      )}
       <div
         className={`bg-white px-6 pt-6 pb-8 transition-all duration-300 ${
-          mobileSignUpIsOpen || mobileSignInIsOpen
+          mobileSignUpIsOpen || mobileSignInIsOpen || mobileForgotPasswordIsOpen
             ? "opacity-0 pointer-events-none"
             : "opacity-100"
         }`}
