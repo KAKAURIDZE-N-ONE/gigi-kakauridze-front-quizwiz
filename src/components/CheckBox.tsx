@@ -13,7 +13,7 @@ const CheckBox: React.FC<CheckBoxProps> = ({
       <div onClick={handleCheckBoxClick} className="cursor-pointer">
         {checkboxIsChecked ? <CheckBoxMarked /> : <CheckBoxUnmarked />}
       </div>
-      <p className="text-black2 text-[0.8125rem]">{text}</p>
+      <p className="text-black2 text-sm">{text}</p>
     </div>
   );
 };

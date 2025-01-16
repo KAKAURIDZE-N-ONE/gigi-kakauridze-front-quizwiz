@@ -14,6 +14,7 @@ export default function useInputsModal() {
   function handleBgClick(e: React.MouseEvent<HTMLDivElement, MouseEvent>) {
     e.stopPropagation();
     if (modalRef.current) {
+      console.log("click");
       modalRef.current.style.transform = "translateY(100%)";
       dispatch(updateModalOpacity(0));
       setTimeout(() => {

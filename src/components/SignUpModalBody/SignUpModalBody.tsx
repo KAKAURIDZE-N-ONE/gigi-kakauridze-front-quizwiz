@@ -3,10 +3,10 @@ import InputsModalBody from "../InputsModalBody/InputsModalBody";
 import Input from "../Input";
 import CheckBox from "../CheckBox";
 import PrimaryButton from "../PrimaryButton";
-import { PropsType } from "./types";
+import { Props } from "./types";
 import useSignUpModalBody from "./useSignUpModalBody";
 
-const SignUpModalBody: React.FC<PropsType> = ({ type }) => {
+const SignUpModalBody: React.FC<Props> = ({ type }) => {
   const {
     register,
     handleSubmit,

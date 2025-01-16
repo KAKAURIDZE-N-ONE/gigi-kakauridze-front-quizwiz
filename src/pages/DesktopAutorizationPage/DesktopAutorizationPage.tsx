@@ -4,6 +4,7 @@ import SignUpModalBody from "@/components/SignUpModalBody/SignUpModalBody";
 import SignInModalBody from "@/components/SignInModalBody/SignInModalBody";
 import useDesktopAutorizationPage from "./useDesktopAutorizationPage";
 import ButtonBack from "@/components/ButtonBack";
+import ForgotPasswordModalBody from "@/components/ForgotPasswordModalBody.tsx/ForgotPasswordModalBody";
 
 const DesktopAutorizationPage: React.FC = () => {
   const { pathname, navigate } = useDesktopAutorizationPage();
@@ -27,6 +28,9 @@ const DesktopAutorizationPage: React.FC = () => {
             <div className="max-w-[26.625rem]">
               {pathname === "/sign-up" && <SignUpModalBody type="desktop" />}
               {pathname === "/log-in" && <SignInModalBody type="desktop" />}
+              {pathname === "/forgot-password" && (
+                <ForgotPasswordModalBody type="desktop" />
+              )}
             </div>
           </div>
         </div>

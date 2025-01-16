@@ -3,6 +3,7 @@ import useGetQueryParams from "@/hooks/useGetQueryParams";
 import useCustomUpdateQueryParams from "@/hooks/useUpdateQueryParams";
 import {
   getModalIsOpen,
+  updateMobileForgotPasswordIsOpen,
   updateMobileSignInIsOpen,
   updateMobileSignUpIsOpen,
   updateModalIsOpen,
@@ -40,6 +41,7 @@ export default function useHeader() {
     dispatch(updateModalIsOpen(true));
     dispatch(updateMobileSignInIsOpen(false));
     dispatch(updateMobileSignUpIsOpen(false));
+    dispatch(updateMobileForgotPasswordIsOpen(false));
     dispatch(updateModalOpacity(100));
   }
 

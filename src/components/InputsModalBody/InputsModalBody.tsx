@@ -16,8 +16,11 @@ const InputsModalBody: React.FC<PropsType> = ({
   actionBtn,
   titleIcon = "empty",
   onSubmit,
+  titlePosition,
 }) => {
   const image = images[titleIcon];
+
+  const titleInTop = type === "mobile" || titlePosition === "up";
 
   return (
     <div className=" max-h-[80dvh] relative">
@@ -42,9 +45,17 @@ const InputsModalBody: React.FC<PropsType> = ({
             <h2 className="raleway font-extrabold text-[1.875rem]">{title}</h2>
             {image && <img src={image} alt="Hand icon" />}
           </div>
-          {type === "mobile" && (
+          {titleInTop && (
             <div className="flex gap-x-2 justify-center">
-              <p className="text-black2 ">{description}</p>
+              <p
+                className={`${
+                  titlePosition === "up" && type === "desktop"
+                    ? "text-left"
+                    : "px-6"
+                } text-black2`}
+              >
+                {description}
+              </p>
               {link?.name && (
                 <Link className="text-blue font-semibold" to={link?.href}>
                   {link?.name}
@@ -58,7 +69,7 @@ const InputsModalBody: React.FC<PropsType> = ({
           {actionBtn}
         </div>
       </form>
-      {type === "desktop" && (
+      {type === "desktop" && titlePosition !== "up" && (
         <div className="mt-[2.375rem] flex gap-x-2 justify-start">
           <p className="text-black2 ">{description}</p>
           {link?.name && (

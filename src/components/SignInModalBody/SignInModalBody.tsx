@@ -5,8 +5,9 @@ import CheckBox from "../CheckBox";
 import PrimaryButton from "../PrimaryButton";
 import { PropsType } from "./types";
 import useSignInModalBody from "./useSignInModalBody";
+import { Link } from "react-router-dom";
 
-const SignUpModalBody: React.FC<PropsType> = ({ type }) => {
+const SignInModalBody: React.FC<PropsType> = ({ type }) => {
   const {
     checkboxIsChecked,
     register,
@@ -49,14 +50,18 @@ const SignUpModalBody: React.FC<PropsType> = ({ type }) => {
       >
         Password
       </Input>
-      {/* <Input placeholder="must be 8 characters">Confirm password</Input> */}
-      <CheckBox
-        handleCheckBoxClick={handleCheckBoxClick}
-        checkboxIsChecked={checkboxIsChecked}
-        text="Remember for 30 days"
-      />
+      <div className="flex items-center justify-between">
+        <CheckBox
+          handleCheckBoxClick={handleCheckBoxClick}
+          checkboxIsChecked={checkboxIsChecked}
+          text="Remember for 30 days"
+        />
+        <Link className="text-sm text-[#344054]" to="/forgot-password">
+          Forgot password?
+        </Link>
+      </div>
     </InputsModalBody>
   );
 };
 
-export default SignUpModalBody;
+export default SignInModalBody;

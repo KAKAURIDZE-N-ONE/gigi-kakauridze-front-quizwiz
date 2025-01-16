@@ -1,5 +1,5 @@
 import useLogIn from "@/hooks/useLogIn";
-import { FormValuesLogin } from "@/types";
+import { FormValuesLogin } from "@/types/formFields";
 import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
