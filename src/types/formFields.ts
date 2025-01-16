@@ -9,3 +9,7 @@ export type FormValues = {
   password: string;
   passwordRepeat: string;
 };
+
+export type ForgotPassword = {
+  email: string;
+};

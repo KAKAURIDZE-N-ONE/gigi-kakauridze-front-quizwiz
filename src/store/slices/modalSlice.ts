@@ -5,12 +5,14 @@ interface ModalState {
   mobileSignInIsOpen: boolean;
   modalOpacity: number;
   mobileSignUpIsOpen: boolean;
+  mobileForgotPasswordIsOpen: boolean;
 }
 
 const initialState: ModalState = {
   modalIsOpen: false,
   mobileSignInIsOpen: false,
   mobileSignUpIsOpen: false,
+  mobileForgotPasswordIsOpen: false,
   modalOpacity: 100,
 };
 
@@ -30,6 +32,9 @@ const modalSlice = createSlice({
     updateModalOpacity(state, action: PayloadAction<number>) {
       state.modalOpacity = action.payload;
     },
+    updateMobileForgotPasswordIsOpen(state, action) {
+      state.mobileForgotPasswordIsOpen = action.payload;
+    },
   },
 });
 
@@ -38,6 +43,7 @@ export const {
   updateModalOpacity,
   updateMobileSignInIsOpen,
   updateMobileSignUpIsOpen,
+  updateMobileForgotPasswordIsOpen,
 } = modalSlice.actions;
 
 export const getModalIsOpen = (state: { modal: ModalState }) =>
@@ -48,6 +54,9 @@ export const getMobileSignInIsOpen = (state: { modal: ModalState }) =>
 
 export const getMobileSignUpIsOpen = (state: { modal: ModalState }) =>
   state.modal.mobileSignUpIsOpen;
+
+export const getMobileForgotPasswordIsOpen = (state: { modal: ModalState }) =>
+  state.modal.mobileForgotPasswordIsOpen;
 
 export const getModalOpacity = (state: { modal: ModalState }) =>
   state.modal.modalOpacity;

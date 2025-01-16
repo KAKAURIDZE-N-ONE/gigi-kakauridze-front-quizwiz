@@ -1,9 +1,10 @@
 import { authInstace } from "../../axios";
+import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
 import {
+  ForgotPassword,
   FormValues,
   FormValuesLogin,
-  verifyUserEmail as verifyUserEmailProps,
-} from "@/types";
+} from "@/types/formFields";
 import { UserTable } from "@/types/tables";
 
 export async function logIn(data: FormValuesLogin): Promise<any> {
@@ -44,6 +45,14 @@ export async function verifyUserEmail({
   const response = await authInstace.get(
     `/api/email/verify/${id}/${hash}?expires=${expires}&signature=${signature}`
   );
+
+  return response;
+}
+
+export async function forgotPassword({ email }: ForgotPassword) {
+  await authInstace.get(`/sanctum/csrf-cookie`);
+
+  const response = await authInstace.post(`/api/forgot-password`, { email });
 
   return response;
 }

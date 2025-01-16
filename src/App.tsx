@@ -8,6 +8,7 @@ import {
   SignUpPage,
 } from "./pages";
 import { QuizPage } from "./pages/QuizPage";
+import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         />
         <Route path="/log-in" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
         <Route element={<Layout />}>
           <Route path="/" element={<LandingPage />} />
           <Route path="/quizzes" element={<QuizListingPage />} />
