@@ -1,10 +1,6 @@
-const queryKeys = {
-  categoriesCount: "categories-count",
-  quizzes: "quizzes",
-  quiz: "quiz",
-  quizzesCount: "quizzes-count",
-  similarQuizzes: "similar-quizzes",
-  user: "user",
-};
-
-export default queryKeys;
+export const quizzes = "quizzes";
+export const user = "user";
+export const quiz = "quiz";
+export const similarQuizzes = "similar-quizzes";
+export const quizzesCount = "quizzes-count";
+export const categoriesCount = "categories-count";
