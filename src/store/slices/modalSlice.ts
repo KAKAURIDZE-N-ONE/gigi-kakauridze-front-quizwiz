@@ -3,9 +3,10 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 interface ModalState {
   modalIsOpen: boolean;
   mobileSignInIsOpen: boolean;
-  modalOpacity: number;
   mobileSignUpIsOpen: boolean;
   mobileForgotPasswordIsOpen: boolean;
+  mobileResetPasswordIsOpen: boolean;
+  modalOpacity: number;
 }
 
 const initialState: ModalState = {
@@ -13,6 +14,7 @@ const initialState: ModalState = {
   mobileSignInIsOpen: false,
   mobileSignUpIsOpen: false,
   mobileForgotPasswordIsOpen: false,
+  mobileResetPasswordIsOpen: false,
   modalOpacity: 100,
 };
 
@@ -35,6 +37,9 @@ const modalSlice = createSlice({
     updateMobileForgotPasswordIsOpen(state, action) {
       state.mobileForgotPasswordIsOpen = action.payload;
     },
+    updateMobileResetPasswordIsOpen(state, action) {
+      state.mobileResetPasswordIsOpen = action.payload;
+    },
   },
 });
 
@@ -44,6 +49,7 @@ export const {
   updateMobileSignInIsOpen,
   updateMobileSignUpIsOpen,
   updateMobileForgotPasswordIsOpen,
+  updateMobileResetPasswordIsOpen,
 } = modalSlice.actions;
 
 export const getModalIsOpen = (state: { modal: ModalState }) =>
@@ -57,6 +63,9 @@ export const getMobileSignUpIsOpen = (state: { modal: ModalState }) =>
 
 export const getMobileForgotPasswordIsOpen = (state: { modal: ModalState }) =>
   state.modal.mobileForgotPasswordIsOpen;
+
+export const getMobileResetPasswordIsOpen = (state: { modal: ModalState }) =>
+  state.modal.mobileResetPasswordIsOpen;
 
 export const getModalOpacity = (state: { modal: ModalState }) =>
   state.modal.modalOpacity;

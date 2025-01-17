@@ -5,10 +5,10 @@ import SignInModalBody from "@/components/SignInModalBody/SignInModalBody";
 import useDesktopAutorizationPage from "./useDesktopAutorizationPage";
 import ButtonBack from "@/components/ButtonBack";
 import ForgotPasswordModalBody from "@/components/ForgotPasswordModalBody.tsx/ForgotPasswordModalBody";
+import { ResetPasswordModalBody } from "@/components/ResetPasswordModalBody";
 
 const DesktopAutorizationPage: React.FC = () => {
   const { pathname, navigate } = useDesktopAutorizationPage();
-
   return (
     <div
       className="h-[100vh] w-full 
@@ -30,6 +30,9 @@ const DesktopAutorizationPage: React.FC = () => {
               {pathname === "/log-in" && <SignInModalBody type="desktop" />}
               {pathname === "/forgot-password" && (
                 <ForgotPasswordModalBody type="desktop" />
+              )}
+              {pathname.slice(0, 15) === "/reset-password" && (
+                <ResetPasswordModalBody type="desktop" />
               )}
             </div>
           </div>

@@ -13,3 +13,15 @@ export type FormValues = {
 export type ForgotPassword = {
   email: string;
 };
+
+export type ResetPasswordForm = {
+  newPassword: string;
+  confirmPassword: string;
+};
+
+export type ResetPasswordApi = {
+  newPassword: string;
+  confirmPassword: string;
+  email: string;
+  token: string;
+};
