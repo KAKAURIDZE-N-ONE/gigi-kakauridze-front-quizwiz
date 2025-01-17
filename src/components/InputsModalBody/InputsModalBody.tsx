@@ -46,7 +46,13 @@ const InputsModalBody: React.FC<PropsType> = ({
             {image && <img src={image} alt="Hand icon" />}
           </div>
           {titleInTop && (
-            <div className="flex gap-x-2 justify-center">
+            <div
+              className={`flex gap-x-2 ${
+                titlePosition === "up" && type === "desktop"
+                  ? ""
+                  : "justify-center"
+              }`}
+            >
               <p
                 className={`${
                   titlePosition === "up" && type === "desktop"
@@ -56,8 +62,8 @@ const InputsModalBody: React.FC<PropsType> = ({
               >
                 {description}
               </p>
-              {link?.name && (
-                <Link className="text-blue font-semibold" to={link?.href}>
+              {link?.name && !link.text && (
+                <Link className="text-blue font-semibold -ml-5" to={link?.href}>
                   {link?.name}
                 </Link>
               )}
@@ -80,6 +86,14 @@ const InputsModalBody: React.FC<PropsType> = ({
         </div>
       )}
       {type === "mobile" && <div className="pb-12"></div>}
+      {link?.name && link.text && type === "desktop" && (
+        <div className="flex items-center gap-3 mt-8">
+          <p className="text-black2">{link.text}</p>
+          <Link className="text-blue font-semibold " to={link?.href}>
+            {link?.name}
+          </Link>
+        </div>
+      )}
     </div>
   );
 };

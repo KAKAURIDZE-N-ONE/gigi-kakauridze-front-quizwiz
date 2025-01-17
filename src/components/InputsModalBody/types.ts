@@ -8,6 +8,7 @@ export type PropsType = {
   link?: {
     name: string;
     href: string;
+    text?: string;
   };
   children: ReactNode;
   actionBtn: ReactNode;

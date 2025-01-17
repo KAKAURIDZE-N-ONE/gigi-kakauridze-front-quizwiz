@@ -2,6 +2,7 @@ import { useAuthentication } from "@/hooks/useAuthentication";
 import useLogOut from "@/hooks/useLogOut";
 import {
   getMobileForgotPasswordIsOpen,
+  getMobileResetPasswordIsOpen,
   getMobileSignInIsOpen,
   getMobileSignUpIsOpen,
   updateModalIsOpen,
@@ -14,6 +15,7 @@ export default function useAutorizationModalBody() {
   const mobileSignInIsOpen = useSelector(getMobileSignInIsOpen);
   const mobileSignUpIsOpen = useSelector(getMobileSignUpIsOpen);
   const mobileForgotPasswordIsOpen = useSelector(getMobileForgotPasswordIsOpen);
+  const mobileResetPasswordIsOpen = useSelector(getMobileResetPasswordIsOpen);
 
   const { isAuthenticated, user } = useAuthentication();
 
@@ -39,5 +41,6 @@ export default function useAutorizationModalBody() {
     mobileSignInIsOpen,
     mobileSignUpIsOpen,
     mobileForgotPasswordIsOpen,
+    mobileResetPasswordIsOpen,
   };
 }

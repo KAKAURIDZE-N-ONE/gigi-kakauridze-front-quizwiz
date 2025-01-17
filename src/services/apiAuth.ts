@@ -1,10 +1,10 @@
 import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
 import { authInstace } from "../../axios";
-import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
 import {
   ForgotPassword,
   FormValues,
   FormValuesLogin,
+  ResetPasswordApi,
 } from "@/types/formFields";
 import { UserTable } from "@/types/tables";
 
@@ -56,4 +56,22 @@ export async function forgotPassword({ email }: ForgotPassword) {
   const response = await authInstace.post(`/api/forgot-password`, { email });
 
   return response;
+}
+
+export async function resetPassword({
+  email,
+  token,
+  newPassword: password,
+  confirmPassword: password_confirmation,
+}: ResetPasswordApi) {
+  await authInstace.get("/sanctum/csrf-cookie");
+
+  const response = await authInstace.post("/api/reset-password", {
+    email,
+    token,
+    password,
+    password_confirmation,
+  });
+
+  return response.data;
 }

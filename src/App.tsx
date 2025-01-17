@@ -9,6 +9,7 @@ import {
 } from "./pages";
 import { QuizPage } from "./pages/QuizPage";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
+import { ResetPasswordPage } from "./pages/ResetPasswordPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           path="/api/email/verify/:id/:hash"
           element={<EmailVerificationPage />}
         />
+        <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
         <Route path="/log-in" element={<LoginPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
         <Route path="/forgot-password" element={<ForgotPasswordPage />} />

@@ -43,7 +43,6 @@ export default function useHeader() {
   useEffect(() => {
     dispatch(resetQuizzes());
     dispatch(updatePage(1));
-    console.log(pathname.slice(0, 8));
     if (debouncedSearch) {
       customUpdateQueryParams("search", debouncedSearch, "add", true);
     } else {
