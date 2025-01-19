@@ -9,6 +9,7 @@ import { timeFormatter } from "@/utils/timeFormatter";
 import { Swiper } from "../Swiper";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
 import useQuizMobileDescription from "./useQuizMobileDescription";
+import { BACKEND_DOMAIN } from "@/config/backendDomain";
 
 const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
   const { sliderWidth, dispatch } = useQuizMobileDescription();
@@ -30,7 +31,7 @@ const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
             </p>
             <div
               style={{
-                backgroundImage: `url(${quiz?.image})`,
+                backgroundImage: `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
                 aspectRatio: 1.4379,
               }}
               className="bg-cover bg-no-repeat bg-center

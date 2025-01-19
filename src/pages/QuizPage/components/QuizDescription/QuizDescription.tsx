@@ -4,17 +4,34 @@ import { QuizMobileDescription } from "../QuizMobileDescription";
 import { QuizDesktopDescription } from "../QuizDesktopDescription";
 
 const QuizDescription: React.FC = () => {
-  const { navigate, quiz, similarQuizzesData } = useQuizDescription();
-
+  const { navigate, quiz, similarQuizzesData, isPending } =
+    useQuizDescription();
   return (
-    <div className="py-6">
-      <QuizMobileDescription quiz={quiz} similarQuizzes={similarQuizzesData} />
-      <QuizDesktopDescription
-        quiz={quiz}
-        navigate={navigate}
-        similarQuizzes={similarQuizzesData}
-      />
-    </div>
+    <>
+      {isPending && (
+        <div
+          className="w-full h-[80vh] 
+      flex items-center justify-center"
+        >
+          <div className="-translate-y-10">
+            <div className="loader "></div>
+          </div>
+        </div>
+      )}
+      {!isPending && (
+        <div className="py-6">
+          <QuizMobileDescription
+            quiz={quiz}
+            similarQuizzes={similarQuizzesData}
+          />
+          <QuizDesktopDescription
+            quiz={quiz}
+            navigate={navigate}
+            similarQuizzes={similarQuizzesData}
+          />
+        </div>
+      )}
+    </>
   );
 };
 

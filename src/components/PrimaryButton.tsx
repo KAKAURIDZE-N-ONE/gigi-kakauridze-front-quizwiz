@@ -13,7 +13,7 @@ const PrimaryButton: React.FC<BtnProps> = ({
       type={type ? type : "button"}
       onClick={clickFn}
       className={`bg-black rounded-[0.25rem]
-    text-white font-bold 
+    text-white font-bold hover:opacity-80 transition-all duration-300
      ${rounded ? rounded : ""}
      ${size === "big" ? "h-[3.5rem] text-base" : "h-[2.875rem] text-sm "}
       

@@ -18,7 +18,6 @@ export default function useSubmitQuiz() {
       timer: number;
     }) => submitQuiz({ quizId, selectedAnswers, timer }),
     onSuccess: (response) => {
-      console.log(response);
       const submitResult = {
         total_time: response?.data?.uploaded_quiz?.total_time,
         correct_quantity: response?.data?.uploaded_quiz?.correct_quantity,

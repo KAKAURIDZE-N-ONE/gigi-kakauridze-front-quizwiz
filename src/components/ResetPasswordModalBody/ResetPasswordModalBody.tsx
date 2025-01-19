@@ -6,7 +6,8 @@ import useResetPasswordModalBody from "./useResetPasswordModalBody";
 import Input from "../Input";
 
 const ResetPasswordModalBody: React.FC<Props> = ({ type }) => {
-  const { register, handleSubmit, onSubmit } = useResetPasswordModalBody();
+  const { register, handleSubmit, onSubmit, watch, errors } =
+    useResetPasswordModalBody();
   return (
     <InputsModalBody
       type={type}
@@ -31,18 +32,26 @@ const ResetPasswordModalBody: React.FC<Props> = ({ type }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
+        type="password"
+        error={errors?.newPassword?.message}
         {...register("newPassword", {
           required: "Password is required",
-          minLength: 8,
+          minLength: {
+            value: 3,
+            message: "Name must be at least 3 characters long", // Custom error message
+          },
         })}
         placeholder="must be 8 characters"
       >
         New password
       </Input>
       <Input
+        type="password"
+        error={errors?.confirmPassword?.message}
         {...register("confirmPassword", {
           required: "Password is required",
-          minLength: 8,
+          validate: (value) =>
+            value === watch("newPassword") || "Passwords do not match",
         })}
         placeholder="repeat password"
       >

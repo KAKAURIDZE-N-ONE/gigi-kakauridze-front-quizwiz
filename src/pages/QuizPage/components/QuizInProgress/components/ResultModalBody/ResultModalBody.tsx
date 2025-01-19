@@ -76,7 +76,7 @@ const ResultModalBody: React.FC<Props> = ({
                   </h3>
                   <p
                     style={{
-                      color: `rgba(${level.background_color})`,
+                      color: `${level.background_color}`,
                     }}
                     className="font-medium text-sm"
                   >

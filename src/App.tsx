@@ -1,5 +1,7 @@
+import "react-toastify/dist/ReactToastify.css";
 import { Route, Routes } from "react-router-dom";
 import Layout from "@/components/Layout";
+import { ToastContainer } from "react-toastify";
 import {
   EmailVerificationPage,
   LandingPage,
@@ -10,13 +12,15 @@ import {
 import { QuizPage } from "./pages/QuizPage";
 import { ForgotPasswordPage } from "./pages/ForgotPasswordPage";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
   return (
     <div>
+      <ToastContainer />
       <Routes>
         <Route
-          path="/api/email/verify/:id/:hash"
+          path="/email/verify/:id/:hash"
           element={<EmailVerificationPage />}
         />
         <Route path="/reset-password/:token" element={<ResetPasswordPage />} />
@@ -27,6 +31,7 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/quizzes" element={<QuizListingPage />} />
           <Route path="/quizzes/:id" element={<QuizPage />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </div>

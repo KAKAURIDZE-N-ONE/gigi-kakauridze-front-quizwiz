@@ -14,6 +14,8 @@ const SignInModalBody: React.FC<PropsType> = ({ type }) => {
     handleSubmit,
     handleCheckBoxClick,
     onSubmit,
+    errors,
+    serverError,
   } = useSignInModalBody();
 
   return (
@@ -36,17 +38,32 @@ const SignInModalBody: React.FC<PropsType> = ({ type }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
-        {...register("email", { required: "Email is required" })}
+        error={errors?.email?.message}
+        type="email"
+        serverError={serverError}
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+            message: "Please enter a valid email address",
+          },
+        })}
         placeholder="Your email"
       >
         Email address
       </Input>
       <Input
+        type="password"
+        error={errors?.password?.message}
+        serverError={serverError}
         {...register("password", {
           required: "Password is required",
-          minLength: 8,
+          minLength: {
+            value: 3,
+            message: "Name must be at least 3 characters long",
+          },
         })}
-        placeholder="must be 8 characters"
+        placeholder="Your password"
       >
         Password
       </Input>

@@ -2,6 +2,7 @@ import { verifyUserEmail } from "@/services/apiAuth";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { PropsType } from "./types";
+import useToast from "@/hooks/useToast";
 
 export default function useEmailVerificationPage() {
   const location = useLocation();
@@ -12,16 +13,24 @@ export default function useEmailVerificationPage() {
   const expires = queryParams.get("expires");
   const signature = queryParams.get("signature");
   const navigate = useNavigate();
+  const { showAlertToast, showSuccessToast } = useToast();
 
   useEffect(() => {
     if (!id || !hash || !expires || !signature) {
       return;
     }
     const verifyEmail = async () => {
-      setIsPending(true);
-      await verifyUserEmail({ hash, id, expires, signature });
-      setIsPending(false);
-      navigate("/log-in");
+      try {
+        setIsPending(true);
+        const data = await verifyUserEmail({ hash, id, expires, signature });
+        console.log(data);
+        setIsPending(false);
+        showSuccessToast("User successfully authenticated.");
+        navigate("/log-in");
+      } catch {
+        showAlertToast("Sorry Token expired");
+        navigate("/");
+      }
     };
 
     verifyEmail();

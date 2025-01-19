@@ -10,6 +10,7 @@ import { timeFormatter } from "@/utils/timeFormatter";
 import { Swiper } from "../Swiper";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
 import { useDispatch } from "react-redux";
+import { BACKEND_DOMAIN } from "@/config/backendDomain";
 
 const QuizDesktopDescription: React.FC<Props> = ({
   navigate,
@@ -90,7 +91,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
               <div className="relative w-full max-w-[21rem]">
                 <div
                   style={{
-                    backgroundImage: `url(${quiz?.image})`,
+                    backgroundImage: `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
                     aspectRatio: 1.1,
                   }}
                   className="bg-no-repeat bg-cover bg-center rounded-[1.25rem] 

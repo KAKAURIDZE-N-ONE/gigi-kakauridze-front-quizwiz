@@ -79,11 +79,11 @@ const FilterFilterBody: React.FC<PropsType> = ({
               >
                 <div
                   style={{
-                    backgroundColor: `rgba(${
+                    backgroundColor: `${
                       isActiveLevel
                         ? level.background_color
                         : level.active_background_color
-                    })`,
+                    }`,
                   }}
                   className={`${
                     type === "desktop" ? "h-7 rounded-full" : "h-10 rounded-2xl"
