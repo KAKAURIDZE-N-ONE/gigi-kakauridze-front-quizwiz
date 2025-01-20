@@ -1,5 +1,5 @@
 import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
-import { authInstace } from "../../axios";
+import { authInstace } from "../axios";
 import {
   ForgotPassword,
   FormValues,
@@ -43,6 +43,7 @@ export async function verifyUserEmail({
   expires,
   signature,
 }: verifyUserEmailProps) {
+  console.log(id, hash, expires, signature);
   const response = await authInstace.get(
     `/api/email/verify/${id}/${hash}?expires=${expires}&signature=${signature}`
   );

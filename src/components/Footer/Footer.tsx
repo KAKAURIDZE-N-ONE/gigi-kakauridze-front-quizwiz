@@ -1,12 +1,10 @@
 import React from "react";
-import Logo from "../assets/svgs/LogoIcon";
-import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { getQuizIsStarted } from "@/store/slices/quizSlice";
+import Logo from "@/assets/svgs/LogoIcon";
+import useFooter from "./useFooter";
+import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
-  const navigate = useNavigate();
-  const quizzIsStarted = useSelector(getQuizIsStarted);
+  const { navigate, quizzIsStarted, data } = useFooter();
 
   return (
     <div className={`${quizzIsStarted ? "hidden" : ""} lg:h-[16.25rem]`}>
@@ -28,23 +26,60 @@ const Footer: React.FC = () => {
           >
             <div className="flex flex-col gap-4 lg:gap-8">
               <h3 className="text-black1 font-semibold">Content</h3>
-              <p className="text-gray2 text-sm">Quizzes</p>
+              <Link
+                to="/quizzes"
+                className="text-gray2 text-sm hover:underline"
+              >
+                Quizzes
+              </Link>
             </div>
 
             <div>
               <div className="flex flex-col gap-4 lg:gap-8">
                 <h3 className="text-black1 font-semibold">Contact us</h3>
-                <p className="text-gray2 text-sm">Email: quizwiz@gmail.com</p>
+                <p className="text-gray2 text-sm">
+                  Email:{" "}
+                  <a
+                    href={`mailto:${data?.data?.email}`}
+                    className="text-blue-500 hover:underline"
+                  >
+                    {data?.data?.email}
+                  </a>
+                </p>
               </div>
-              <p className="mt-8 text-gray2 text-sm">Tel: +995 328989</p>
+              <p className="mt-8 text-gray2 text-sm">
+                Tel:{" "}
+                <a
+                  className="hover:underline"
+                  href={`tel:${data?.data?.phone}`}
+                >
+                  {data?.data?.phone}
+                </a>
+              </p>
             </div>
 
             <div>
               <div className="flex flex-col gap-4 lg:gap-8">
                 <h3 className="text-black1 font-semibold">Social media</h3>
-                <p className="text-gray2 text-sm">Facebook</p>
+                <a
+                  href={data?.data?.facebook}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray2 text-sm hover:underline"
+                >
+                  Facebook
+                </a>{" "}
               </div>
-              <p className="mt-8 text-gray2 text-sm">LinkedIn</p>
+              <p className="mt-8 text-gray2 text-sm">
+                <a
+                  href={data?.data?.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray2 text-sm hover:underline"
+                >
+                  Linkedin
+                </a>{" "}
+              </p>
             </div>
           </div>
         </div>

@@ -10,17 +10,15 @@ export default function useResetPasswordModalBody() {
 
   const { mutate: resetPassword } = useResetPassword();
 
-  const { register, handleSubmit, setError } = useForm<ResetPasswordForm>();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm<ResetPasswordForm>();
 
   const onSubmit: SubmitHandler<ResetPasswordForm> = async (data) => {
     if (!token || !email) return;
-    if (data.newPassword !== data.confirmPassword) {
-      setError("confirmPassword", {
-        type: "manual",
-        message: "Passwords do not match",
-      });
-      return;
-    }
 
     resetPassword({
       email,
@@ -30,5 +28,5 @@ export default function useResetPasswordModalBody() {
     });
   };
 
-  return { register, handleSubmit, onSubmit };
+  return { watch, register, handleSubmit, onSubmit, errors };
 }

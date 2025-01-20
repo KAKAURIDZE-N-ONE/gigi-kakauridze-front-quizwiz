@@ -12,6 +12,6 @@ export type Props = Hook & {
   total_filled: number;
   level: Level;
   id: number;
-  type?: "similar";
+  type?: "similar" | "listing";
   direction?: "vertical" | "horizontal";
 };

@@ -9,6 +9,7 @@ import useQuizCard from "./useQuizCard";
 import { Props } from "./types";
 import { Link } from "react-router-dom";
 import { CategoryItems } from "../CategoryItems";
+import { BACKEND_DOMAIN } from "@/config/backendDomain";
 
 const QuizCard: React.FC<Props> = ({
   image,
@@ -31,7 +32,9 @@ const QuizCard: React.FC<Props> = ({
     <div
       className={`${
         type === "similar" && direction === "horizontal" ? "px-4 " : ""
-      } `}
+      } ${
+        type === "listing" ? "hover:scale-105" : ""
+      } transition-all duration-300`}
     >
       <Link
         to={`/quizzes/${id}`}
@@ -41,10 +44,15 @@ const QuizCard: React.FC<Props> = ({
              ? `border border-white3 rounded-lg bg-[#F8F8F9]
             hover:border-black transition-all duration-200`
              : " shadow-lg"
-         }`}
+         } ${
+          type === "listing" ? "hover:shadow-md" : ""
+        } transition-all duration-300`}
       >
         <div
-          style={{ backgroundImage: `url(${image})`, aspectRatio: 1.4444 }}
+          style={{
+            backgroundImage: `url(${BACKEND_DOMAIN}/storage/${image})`,
+            aspectRatio: 1.4444,
+          }}
           className="bg-cover bg-no-repeat bg-center"
         ></div>
         <div className="flex flex-col gap-y-[1.25rem]">

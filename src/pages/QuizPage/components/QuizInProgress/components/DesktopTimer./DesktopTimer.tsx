@@ -28,7 +28,11 @@ const DesktopTimer: React.FC<Props> = ({ duration, quizId }) => {
       </div>
       <div className="flex flex-col items-center mt-12">
         {timer && (
-          <h2 className="text-6xl text-gray2">
+          <h2
+            className={`${
+              timer ? (timer <= 10 ? "text-red" : "text-gray2") : "text-red"
+            } text-6xl text-gray2`}
+          >
             {timeFormatter({ seconds: timer, type: "timer" })}
           </h2>
         )}

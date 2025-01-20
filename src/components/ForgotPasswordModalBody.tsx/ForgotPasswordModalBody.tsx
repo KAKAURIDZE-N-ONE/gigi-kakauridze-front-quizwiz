@@ -5,7 +5,8 @@ import { Props } from "./types";
 import useForgotPasswordModalBody from "./useForgotPasswordModalBody";
 
 const ForgotPasswordModalBody: React.FC<Props> = ({ type }) => {
-  const { register, handleSubmit, onSubmit } = useForgotPasswordModalBody();
+  const { register, handleSubmit, onSubmit, errors } =
+    useForgotPasswordModalBody();
 
   return (
     <InputsModalBody
@@ -26,7 +27,15 @@ const ForgotPasswordModalBody: React.FC<Props> = ({ type }) => {
       onSubmit={handleSubmit(onSubmit)}
     >
       <Input
-        {...register("email", { required: "Email is required" })}
+        type="email"
+        error={errors?.email?.message}
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+            message: "Please enter a valid email address",
+          },
+        })}
         placeholder="Your email"
       >
         Email address

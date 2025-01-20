@@ -19,9 +19,11 @@ const FilterButton: React.FC<PropsType> = ({ filled }) => {
   lg:h-[2.375rem] cursor-pointer h-12
   `}
       >
-        <FilterIcon
-          color={filled ? "white" : filtersQuantity > 0 ? "black" : "#667085"}
-        />
+        {filled ? (
+          <FilterIcon color="white" />
+        ) : (
+          <FilterIcon color={filtersQuantity > 0 ? "black" : "#667085"} />
+        )}
         <p
           className={` ${
             filled

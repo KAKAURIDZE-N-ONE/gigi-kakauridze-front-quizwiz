@@ -22,7 +22,6 @@ export default function useQuizListing() {
 
   useEffect(() => {
     dispatch(updatePage(1));
-    dispatch(resetQuizzes());
   }, []);
 
   function handleLoadMoreClick() {

@@ -1,6 +1,7 @@
 import AutorizationDesktopIcon from "@/pages/DesktopAutorizationPage/svgs/AutorizationDesktopIcon";
 import Logo from "@/assets/svgs/LogoIcon";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Cover: React.FC = () => {
   return (
@@ -13,9 +14,9 @@ const Cover: React.FC = () => {
         flex items-center relative"
       >
         <AutorizationDesktopIcon />
-        <div className="absolute top-[2.5rem] left-[2.5rem]">
+        <Link to="/" className="absolute top-[2.5rem] left-[2.5rem]">
           <Logo size="small" />
-        </div>
+        </Link>
       </div>
     </div>
   );

@@ -1,6 +1,10 @@
 import useScrollTo from "@/hooks/useScrollTo";
 import { getQuiz } from "@/services/apiQuiz";
-import { getQuizFinished, updateQuizIsStarted } from "@/store/slices/quizSlice";
+import {
+  getQuizFinished,
+  resetSelectedAnswers,
+  updateQuizIsStarted,
+} from "@/store/slices/quizSlice";
 import { Quiz } from "@/types";
 import { useQuery } from "@tanstack/react-query";
 import { useCallback, useEffect } from "react";
@@ -23,6 +27,7 @@ export default function useQuizInProgress() {
 
     if (userConfirmed) {
       dispatch(updateQuizIsStarted(false));
+      dispatch(resetSelectedAnswers());
     } else {
       navigate(window.location.pathname, { replace: true });
     }
@@ -43,10 +48,10 @@ export default function useQuizInProgress() {
     };
   }, [handleNavigation]);
 
-  const { data: quiz } = useQuery<Quiz>({
+  const { data: quiz, isPending } = useQuery<Quiz>({
     queryKey: ["quiz", id],
     queryFn: () => getQuiz(String(id)),
   });
 
-  return { quiz, quizFinished };
+  return { quiz, quizFinished, isPending };
 }

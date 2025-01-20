@@ -12,7 +12,7 @@ export default function useQuizDescription() {
 
   useScrollTo({ dependency: [id] });
 
-  const { data: quiz } = useQuery<Quiz>({
+  const { data: quiz, isPending } = useQuery<Quiz>({
     queryKey: [QUIZ, id],
     queryFn: () => getQuiz(String(id)),
   });
@@ -34,5 +34,5 @@ export default function useQuizDescription() {
 
   const similarQuizzesData = similarQuizzes?.data;
 
-  return { navigate, quiz, similarQuizzesData };
+  return { navigate, quiz, similarQuizzesData, isPending };
 }

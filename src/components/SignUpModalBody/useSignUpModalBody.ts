@@ -1,29 +1,34 @@
 import useSignUp from "@/hooks/useSignUp";
-import { FormValues } from "@/types";
-import { useState } from "react";
+import { ApiError } from "@/types/errors";
+import { FormValues } from "@/types/formFields";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function useSignUpModalBody() {
-  const [checkboxIsChecked, setCheckboxIsChecked] = useState<boolean>(false);
+  const {
+    watch,
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormValues>({
+    defaultValues: {
+      acceptTerms: false,
+    },
+  });
 
-  const { register, handleSubmit } = useForm<FormValues>();
+  const { mutate, error } = useSignUp();
 
-  const { mutate } = useSignUp();
+  const apiError = error as ApiError;
 
   const onSubmit: SubmitHandler<FormValues> = async (data) => {
-    if (!checkboxIsChecked) return;
     mutate(data);
   };
-
-  function handleCheckBoxClick() {
-    setCheckboxIsChecked((status) => !status);
-  }
 
   return {
     register,
     handleSubmit,
     onSubmit,
-    handleCheckBoxClick,
-    checkboxIsChecked,
+    errors,
+    serverErrors: apiError?.response?.data?.errors,
+    watch,
   };
 }

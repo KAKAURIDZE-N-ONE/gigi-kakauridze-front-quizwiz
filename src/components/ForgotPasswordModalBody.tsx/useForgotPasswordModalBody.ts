@@ -3,7 +3,11 @@ import { ForgotPassword } from "@/types/formFields";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function useForgotPasswordModalBody() {
-  const { register, handleSubmit } = useForm<ForgotPassword>();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<ForgotPassword>();
 
   const { mutate } = useForgotPassword();
 
@@ -11,6 +15,5 @@ export default function useForgotPasswordModalBody() {
     mutate(data);
   };
 
-  return { register, handleSubmit, onSubmit };
+  return { register, handleSubmit, errors, onSubmit };
 }
-  

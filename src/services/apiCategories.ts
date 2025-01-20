@@ -1,4 +1,4 @@
-import { normalInstace } from "../../axios";
+import { normalInstace } from "@/axios";
 
 export async function getCategoriesLength() {
   const response = await normalInstace.get("api/categories/count");

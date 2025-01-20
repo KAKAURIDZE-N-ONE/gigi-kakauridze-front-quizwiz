@@ -1,6 +1,7 @@
 export type FormValuesLogin = {
   email: string;
   password: string;
+  remember: boolean;
 };
 
 export type FormValues = {
@@ -8,6 +9,7 @@ export type FormValues = {
   email: string;
   password: string;
   passwordRepeat: string;
+  acceptTerms: boolean;
 };
 
 export type ForgotPassword = {
