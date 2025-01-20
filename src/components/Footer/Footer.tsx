@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../assets/svgs/LogoIcon";
+import Logo from "@/assets/svgs/LogoIcon";
 import useFooter from "./useFooter";
 import { Link } from "react-router-dom";
 

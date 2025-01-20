@@ -8,15 +8,8 @@ import useSignInModalBody from "./useSignInModalBody";
 import { Link } from "react-router-dom";
 
 const SignInModalBody: React.FC<PropsType> = ({ type }) => {
-  const {
-    checkboxIsChecked,
-    register,
-    handleSubmit,
-    handleCheckBoxClick,
-    onSubmit,
-    errors,
-    serverError,
-  } = useSignInModalBody();
+  const { register, handleSubmit, onSubmit, errors, serverError, watch } =
+    useSignInModalBody();
 
   return (
     <InputsModalBody
@@ -69,8 +62,8 @@ const SignInModalBody: React.FC<PropsType> = ({ type }) => {
       </Input>
       <div className="flex items-center justify-between">
         <CheckBox
-          handleCheckBoxClick={handleCheckBoxClick}
-          checkboxIsChecked={checkboxIsChecked}
+          checked={watch("remember")}
+          register={register("remember")}
           text="Remember for 30 days"
         />
         <Link className="text-sm text-[#344054]" to="/forgot-password">

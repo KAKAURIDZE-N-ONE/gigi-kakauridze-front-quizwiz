@@ -7,18 +7,8 @@ import { Props } from "./types";
 import useSignUpModalBody from "./useSignUpModalBody";
 
 const SignUpModalBody: React.FC<Props> = ({ type }) => {
-  const {
-    register,
-    handleSubmit,
-    onSubmit,
-    handleCheckBoxClick,
-    checkboxIsChecked,
-    errors,
-    serverErrors,
-    watch,
-    checkboxError,
-  } = useSignUpModalBody();
-
+  const { register, handleSubmit, onSubmit, errors, serverErrors, watch } =
+    useSignUpModalBody();
   return (
     <InputsModalBody
       type={type}
@@ -94,12 +84,16 @@ const SignUpModalBody: React.FC<Props> = ({ type }) => {
       </Input>
       <div className="flex flex-col gap-2">
         <CheckBox
+          checked={watch("acceptTerms")}
           text="I accept the terms and privacy policy"
-          handleCheckBoxClick={handleCheckBoxClick}
-          checkboxIsChecked={checkboxIsChecked}
+          register={register("acceptTerms", {
+            required: "You must accept the terms and conditions",
+          })}
         />
-        {checkboxError && (
-          <p className="-mb-2 text-sm text-[#F04438]">{checkboxError}</p>
+        {errors?.acceptTerms && (
+          <p className="-mb-2 text-sm text-[#F04438]">
+            {errors?.acceptTerms?.message}
+          </p>
         )}
       </div>
     </InputsModalBody>

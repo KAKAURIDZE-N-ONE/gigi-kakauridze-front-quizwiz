@@ -17,7 +17,14 @@ import NotFoundPage from "./pages/NotFoundPage";
 function App() {
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick
+        pauseOnHover
+        draggable
+      />
       <Routes>
         <Route
           path="/email/verify/:id/:hash"

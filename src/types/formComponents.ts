@@ -8,7 +8,7 @@ export type InputProps = {
 };
 
 export type CheckBoxProps = {
-  handleCheckBoxClick: () => void;
-  checkboxIsChecked: boolean;
   text: string;
+  register: any;
+  checked: boolean;
 };

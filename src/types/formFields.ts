@@ -9,6 +9,7 @@ export type FormValues = {
   email: string;
   password: string;
   passwordRepeat: string;
+  acceptTerms: boolean;
 };
 
 export type ForgotPassword = {
