@@ -91,7 +91,9 @@ const QuizDesktopDescription: React.FC<Props> = ({
               <div className="relative w-full max-w-[21rem]">
                 <div
                   style={{
-                    backgroundImage: `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
+                    backgroundImage: quiz?.image.startsWith("https")
+                      ? `url(${quiz?.image})`
+                      : `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
                     aspectRatio: 1.1,
                   }}
                   className="bg-no-repeat bg-cover bg-center rounded-[1.25rem] 

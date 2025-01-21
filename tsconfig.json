@@ -6,8 +6,9 @@
   ],
   "compilerOptions": {
     "baseUrl": "./src",
+    "module": "ESNext",
+    "moduleResolution": "node",
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "moduleResolution": "node"
+    "allowSyntheticDefaultImports": true
   }
 }

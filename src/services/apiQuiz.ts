@@ -1,5 +1,5 @@
 import { SelectedAnswersCombination } from "@/types";
-import { authInstace, normalInstace } from "@/axios";
+import { authInstace, normalInstace } from "@/axiosInstances";
 
 export async function getQuiz(id: string) {
   const response = await authInstace.get(`/api/quizzes/${id}`);

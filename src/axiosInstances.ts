@@ -1,4 +1,4 @@
-import axios from "../node_modules/axios";
+import axios from "axios";
 
 export const authInstace = axios.create({
   baseURL: import.meta.env.VITE_API_BASE_URL,
