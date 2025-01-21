@@ -1,7 +1,7 @@
 import useOutsideClick from "@/hooks/useOutsideClick";
 import useScrollTo from "@/hooks/useScrollTo";
 import useWindowWidth from "@/hooks/useWindowWidth";
-import { getPage, resetQuizzes, updatePage } from "@/store/slices/quizSlice";
+import { getPage, updatePage } from "@/store/slices/quizSlice";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";

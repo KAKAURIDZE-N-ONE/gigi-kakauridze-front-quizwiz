@@ -96,7 +96,7 @@ const QuizCard: React.FC<Props> = memo(
             </div>
             <div className="flex gap-[1.25rem] items-center">
               <div className="flex gap-3 items-center">
-                <IconLayout isLevel={true} bgColor={level?.background_color}>
+                <IconLayout bgColor={level?.background_color}>
                   <LightningIcon iconColor={level?.icon_color} />
                 </IconLayout>
                 <div className="flex flex-col">
