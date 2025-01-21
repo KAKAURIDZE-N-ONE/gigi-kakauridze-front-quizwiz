@@ -29,6 +29,8 @@ const QuizCard: React.FC<Props> = memo(
       userDetails,
     });
 
+    console.log(image);
+
     return (
       <div
         className={`${
@@ -51,7 +53,9 @@ const QuizCard: React.FC<Props> = memo(
         >
           <div
             style={{
-              backgroundImage: `url(${BACKEND_DOMAIN}/storage/${image})`,
+              backgroundImage: image.startsWith("https")
+                ? `url(${image})`
+                : `url(${BACKEND_DOMAIN}/storage/${image})`,
               aspectRatio: 1.4444,
             }}
             className="bg-cover bg-no-repeat bg-center"
@@ -96,7 +100,7 @@ const QuizCard: React.FC<Props> = memo(
             </div>
             <div className="flex gap-[1.25rem] items-center">
               <div className="flex gap-3 items-center">
-                <IconLayout isLevel={true} bgColor={level?.background_color}>
+                <IconLayout bgColor={level?.background_color}>
                   <LightningIcon iconColor={level?.icon_color} />
                 </IconLayout>
                 <div className="flex flex-col">

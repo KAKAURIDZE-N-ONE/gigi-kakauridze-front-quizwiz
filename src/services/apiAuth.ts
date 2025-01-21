@@ -1,5 +1,5 @@
 import { verifyUserEmail as verifyUserEmailProps } from "@/types/emails";
-import { authInstace } from "../axios";
+import { authInstace } from "@/axiosInstances";
 import {
   ForgotPassword,
   FormValues,

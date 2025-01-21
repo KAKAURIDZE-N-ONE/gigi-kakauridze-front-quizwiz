@@ -31,7 +31,9 @@ const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
             </p>
             <div
               style={{
-                backgroundImage: `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
+                backgroundImage: quiz?.image.startsWith("https")
+                  ? `url(${quiz?.image})`
+                  : `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
                 aspectRatio: 1.4379,
               }}
               className="bg-cover bg-no-repeat bg-center

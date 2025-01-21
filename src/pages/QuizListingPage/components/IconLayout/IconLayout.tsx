@@ -1,7 +1,7 @@
 import React from "react";
 import { PropsType } from "./types";
 
-const IconLayout: React.FC<PropsType> = ({ bgColor, children, isLevel }) => {
+const IconLayout: React.FC<PropsType> = ({ bgColor, children }) => {
   return (
     <div
       style={{ backgroundColor: bgColor }}
