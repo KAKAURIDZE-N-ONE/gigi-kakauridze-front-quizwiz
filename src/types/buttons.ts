@@ -4,6 +4,7 @@ export type BtnProps = {
   rounded?: string;
   size?: string;
   type?: "button" | "submit" | "reset";
+  disabled?: boolean;
 };
 
 export type ButtonProps = {

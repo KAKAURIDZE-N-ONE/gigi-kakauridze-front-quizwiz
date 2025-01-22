@@ -8,8 +8,15 @@ import useSignInModalBody from "./useSignInModalBody";
 import { Link } from "react-router-dom";
 
 const SignInModalBody: React.FC<PropsType> = ({ type }) => {
-  const { register, handleSubmit, onSubmit, errors, serverError, watch } =
-    useSignInModalBody();
+  const {
+    register,
+    isPending,
+    handleSubmit,
+    onSubmit,
+    errors,
+    serverError,
+    watch,
+  } = useSignInModalBody();
 
   return (
     <InputsModalBody
@@ -24,6 +31,7 @@ const SignInModalBody: React.FC<PropsType> = ({ type }) => {
           size="big"
           clickFn={() => {}}
           rounded="rounded-[0.625rem]"
+          disabled={isPending}
         >
           Log in
         </PrimaryButton>
@@ -32,12 +40,11 @@ const SignInModalBody: React.FC<PropsType> = ({ type }) => {
     >
       <Input
         error={errors?.email?.message}
-        type="email"
         serverError={serverError}
         {...register("email", {
           required: "Email is required",
           pattern: {
-            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/,
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
             message: "Please enter a valid email address",
           },
         })}

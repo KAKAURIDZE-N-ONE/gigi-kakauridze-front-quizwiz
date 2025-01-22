@@ -7,8 +7,15 @@ import { Props } from "./types";
 import useSignUpModalBody from "./useSignUpModalBody";
 
 const SignUpModalBody: React.FC<Props> = ({ type }) => {
-  const { register, handleSubmit, onSubmit, errors, serverErrors, watch } =
-    useSignUpModalBody();
+  const {
+    register,
+    handleSubmit,
+    isPending,
+    onSubmit,
+    errors,
+    serverErrors,
+    watch,
+  } = useSignUpModalBody();
   return (
     <InputsModalBody
       type={type}
@@ -21,6 +28,7 @@ const SignUpModalBody: React.FC<Props> = ({ type }) => {
           size="big"
           clickFn={() => {}}
           rounded="rounded-[0.625rem]"
+          disabled={isPending}
         >
           Log in
         </PrimaryButton>
@@ -45,8 +53,13 @@ const SignUpModalBody: React.FC<Props> = ({ type }) => {
         error={errors.email?.message}
         serverError={serverErrors?.email?.at(0)}
         placeholder="Example@gmail.com"
-        type="email"
-        {...register("email", { required: "Email is required" })}
+        {...register("email", {
+          required: "Email is required",
+          pattern: {
+            value: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+            message: "Please enter a valid email address",
+          },
+        })}
       >
         Email
       </Input>

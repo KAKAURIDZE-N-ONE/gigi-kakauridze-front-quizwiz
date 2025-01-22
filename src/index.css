@@ -16,6 +16,15 @@ body {
   font-family: "inter", sans-serif;
 }
 
+.btn-hover:hover {
+  box-shadow: 5px 5px 0px 0px black;
+  background-color: white;
+  color: black;
+  transform: translate(-5px, -5px);
+  border: 1px solid black;
+  transition: all 0.5s;
+}
+
 .raleway {
   font-family: "raleway", sans-serif;
 }

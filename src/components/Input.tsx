@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { InputProps } from "@/types/formComponents";
 import ClosedEye from "@/assets/svgs/ClosedEye";
 import OpenEye from "@/assets/svgs/OpenEye";
+import ErrorMark from "@/assets/svgs/ErrorMark";
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ children, error, serverError, type, placeholder, ...rest }, ref) => {
@@ -46,6 +47,16 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                   <OpenEye />
                 </div>
               )}
+            </div>
+          )}
+          {hasError && (
+            <div
+              className={`absolute ${
+                type === "password" ? "right-12" : "right-5"
+              } top-1/2
+            -translate-y-1/2 cursor-pointer`}
+            >
+              <ErrorMark />
             </div>
           )}
         </div>

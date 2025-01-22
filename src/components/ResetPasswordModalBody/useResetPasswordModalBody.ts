@@ -8,7 +8,7 @@ export default function useResetPasswordModalBody() {
   const { token } = useParams();
   const email = queryParams.get("email");
 
-  const { mutate: resetPassword } = useResetPassword();
+  const { mutate: resetPassword, isPending } = useResetPassword();
 
   const {
     register,
@@ -28,5 +28,5 @@ export default function useResetPasswordModalBody() {
     });
   };
 
-  return { watch, register, handleSubmit, onSubmit, errors };
+  return { watch, register, handleSubmit, onSubmit, errors, isPending };
 }

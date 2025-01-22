@@ -29,8 +29,6 @@ const QuizCard: React.FC<Props> = memo(
       userDetails,
     });
 
-    console.log(image);
-
     return (
       <div
         className={`${

@@ -6,7 +6,7 @@ import useResetPasswordModalBody from "./useResetPasswordModalBody";
 import Input from "../Input";
 
 const ResetPasswordModalBody: React.FC<Props> = ({ type }) => {
-  const { register, handleSubmit, onSubmit, watch, errors } =
+  const { register, handleSubmit, onSubmit, watch, errors, isPending } =
     useResetPasswordModalBody();
   return (
     <InputsModalBody
@@ -25,6 +25,7 @@ const ResetPasswordModalBody: React.FC<Props> = ({ type }) => {
           size="big"
           clickFn={() => {}}
           rounded="rounded-[0.625rem]"
+          disabled={isPending}
         >
           Log in
         </PrimaryButton>
