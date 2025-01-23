@@ -1,7 +1,7 @@
 import { Loader } from "@/components/Loader";
 import XButton from "@/pages/QuizListingPage/svgs/XButton";
 import React from "react";
-import CompletedMark from "../../svgs/CompletedMark";
+import CompletedMark from "@/pages/QuizPage/components/QuizInProgress/svgs/CompletedMark";
 import useResultModalBody from "./useResultModalBody";
 import { Props } from "./types";
 import { timeFormatter } from "@/utils/timeFormatter";
@@ -102,7 +102,7 @@ const ResultModalBody: React.FC<Props> = ({
                 </div>
                 <div className="flex flex-col gap-2 pb-3">
                   <h3 className="font-medium text-sm text-black2">
-                    Wright answers
+                    Right answers
                   </h3>
                   <p className="font-medium text-sm">
                     {userResult?.correct_quantity}

@@ -1,15 +1,15 @@
 import React from "react";
-import Logo from "../../assets/svgs/LogoIcon";
-import XBtnIcon from "../../assets/svgs/XBtnIcon";
-import PrimaryButton from "../PrimaryButton";
-import SecondaryButton from "../SecondaryButton";
+import Logo from "@/assets/svgs/LogoIcon";
+import XBtnIcon from "@/assets/svgs/XBtnIcon";
+import PrimaryButton from "@/components/PrimaryButton.tsx";
+import SecondaryButton from "@/components/SecondaryButton";
 import profileImage from "@/assets/images/profileImage.jpg";
-import SignUpModalBody from "../SignUpModalBody/SignUpModalBody";
-import SignInModalBody from "../SignInModalBody/SignInModalBody";
-import InputsModal from "../InputsModal/InputsModal";
+import SignUpModalBody from "@/components/SignUpModalBody/SignUpModalBody";
+import SignInModalBody from "@/components/SignInModalBody/SignInModalBody";
+import InputsModal from "@/components/InputsModal/InputsModal";
 import useAutorizationModalBody from "./useAutorizationModalBody";
-import { ForgotPasswordModalBody } from "../ForgotPasswordModalBody.tsx";
-import ResetPasswordModalBody from "../ResetPasswordModalBody/ResetPasswordModalBody.tsx";
+import { ForgotPasswordModalBody } from "@/components/ForgotPasswordModalBody.tsx";
+import ResetPasswordModalBody from "@/components/ResetPasswordModalBody/ResetPasswordModalBody.tsx";
 
 const AutorizationModalBody: React.FC = () => {
   const {
@@ -47,7 +47,7 @@ const AutorizationModalBody: React.FC = () => {
         </InputsModal>
       )}
       <div
-        className={`bg-white px-6 pt-6 pb-8 transition-all duration-300 ${
+        className={`bg-white absolute top-0 left-0 px-6 pt-6 pb-8 transition-all duration-300 ${
           mobileSignUpIsOpen ||
           mobileSignInIsOpen ||
           mobileForgotPasswordIsOpen ||

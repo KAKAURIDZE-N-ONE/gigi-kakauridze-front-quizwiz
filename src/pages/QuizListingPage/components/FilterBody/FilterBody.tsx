@@ -1,9 +1,9 @@
-import MobileFilterBodyLayout from "../MobileFilterBodyLayout/MobileFilterBodyLayout";
-import FilterFilterBody from "../FilterFilterBody/FilterFilterBody";
-import FilterSortBody from "../FilterSortBody/FilterSortBody";
-import DesktopFilterBodyLayout from "../DesktopFilterBodyLayout/DesktopFilterBodyLayout";
+import { MobileFilterBodyLayout } from "@/pages/QuizListingPage/components/MobileFilterBodyLayout";
+import { FilterSortBody } from "@/pages/QuizListingPage/components/FilterSortBody";
+import { DesktopFilterBodyLayout } from "@/pages/QuizListingPage/components/DesktopFilterBodyLayout";
 import { PropsType } from "./types";
 import useFilterBody from "./useFilterBody";
+import FilterFilterBody from "../FilterFilterBody/FilterFilterBody";
 
 const FilterBody: React.FC<PropsType> = ({ setFilterIsActive, type }) => {
   const {

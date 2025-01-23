@@ -1,7 +1,7 @@
 import React from "react";
-import CheckBoxMarked from "../assets/svgs/CheckBoxMarked";
-import CheckBoxUnmarked from "../assets/svgs/CheckBoxUnmarked";
-import { CheckBoxProps } from "types/formComponents";
+import CheckBoxMarked from "@/assets/svgs/CheckBoxMarked";
+import CheckBoxUnmarked from "@/assets/svgs/CheckBoxUnmarked";
+import { CheckBoxProps } from "@/types/formComponents";
 
 const CheckBox: React.FC<CheckBoxProps> = ({ text, register, checked }) => {
   return (

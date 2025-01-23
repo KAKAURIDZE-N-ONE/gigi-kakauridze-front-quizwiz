@@ -1,4 +1,4 @@
-import FilterIcon from "../../svgs/FilterIcon";
+import FilterIcon from "@/pages/QuizListingPage/svgs/FilterIcon";
 import React from "react";
 import useFilterButton from "./useFilterButton";
 import { PropsType } from "./types";

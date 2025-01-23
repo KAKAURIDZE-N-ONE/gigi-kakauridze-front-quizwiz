@@ -1,6 +1,6 @@
 import { useAuthentication } from "@/hooks/useAuthentication";
-import useGetFilteredFilters from "../../hooks/useGetFilteredFilters";
-import { Filters } from "../../types";
+import useGetFilteredFilters from "@/pages/QuizListingPage/hooks/useGetFilteredFilters";
+import { Filters } from "@/pages/QuizListingPage/types";
 import { HookType } from "./types";
 
 export default function useFilterFilterBody({

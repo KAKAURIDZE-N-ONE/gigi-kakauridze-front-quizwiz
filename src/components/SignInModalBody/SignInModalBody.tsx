@@ -1,8 +1,8 @@
 import React from "react";
-import InputsModalBody from "../InputsModalBody/InputsModalBody";
-import Input from "../Input";
-import CheckBox from "../CheckBox";
-import PrimaryButton from "../PrimaryButton";
+import InputsModalBody from "@/components/InputsModalBody/InputsModalBody";
+import Input from "@/components/Input";
+import CheckBox from "@/components/CheckBox";
+import PrimaryButton from "@/components/PrimaryButton";
 import { PropsType } from "./types";
 import useSignInModalBody from "./useSignInModalBody";
 import { Link } from "react-router-dom";

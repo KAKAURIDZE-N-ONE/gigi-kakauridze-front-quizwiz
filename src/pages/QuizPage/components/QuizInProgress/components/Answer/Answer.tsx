@@ -1,7 +1,7 @@
 import React from "react";
 import { Props } from "./props";
-import SelectedMark from "../../svgs/SelectedMark";
-import UnselectedMark from "../../svgs/UnselectedMark";
+import SelectedMark from "@/pages/QuizPage/components/QuizInProgress/svgs/SelectedMark";
+import UnselectedMark from "@/pages/QuizPage/components/QuizInProgress/svgs/UnselectedMark";
 import { useDispatch } from "react-redux";
 import { addSelectedAnswer } from "@/store/slices/quizSlice";
 

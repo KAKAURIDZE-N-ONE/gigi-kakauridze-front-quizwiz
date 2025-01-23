@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react";
-import MarkedCheckBox from "../../svgs/MarkedCheckBox";
-import UnmarkedCheckBox from "../../svgs/UnmarkedCheckBox";
+import MarkedCheckBox from "@/pages/QuizListingPage/svgs/MarkedCheckBox";
+import UnmarkedCheckBox from "@/pages/QuizListingPage/svgs/UnmarkedCheckBox";
 import { Category, Level } from "@/types";
 import { PropsType } from "./types";
 import useFilterFilterBody from "./useFilterFilterBody";

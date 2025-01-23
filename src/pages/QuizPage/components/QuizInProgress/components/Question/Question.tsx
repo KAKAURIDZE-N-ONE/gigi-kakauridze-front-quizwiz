@@ -1,7 +1,7 @@
 import React from "react";
 import { Props } from "./types";
-import Info from "../../svgs/Info";
-import { Answer } from "../Answer";
+import Info from "@/pages/QuizPage/components/QuizInProgress/svgs/Info";
+import { Answer } from "@/pages/QuizPage/components/QuizInProgress/components/Answer";
 import { useSelector } from "react-redux";
 import { getSelectedAnswers } from "@/store/slices/quizSlice";
 import { RootState } from "@/store/store";

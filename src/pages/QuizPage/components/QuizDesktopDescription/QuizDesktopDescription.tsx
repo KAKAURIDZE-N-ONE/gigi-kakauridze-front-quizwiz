@@ -2,15 +2,14 @@ import ButtonBack from "@/components/ButtonBack";
 import React from "react";
 import { Props } from "./types";
 import { CategoryItems } from "@/components/CategoryItems";
-import Hash from "../QuizMobileDescription/svgs/Hash";
-import Points from "../QuizMobileDescription/svgs/Points";
-import Rocket from "../QuizMobileDescription/svgs/Rocket";
-import Time from "../QuizMobileDescription/svgs/Time";
+import Hash from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Hash";
+import Points from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Points";
+import Rocket from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Rocket";
+import Time from "@/pages/QuizPage/components/QuizMobileDescription/svgs/Time";
 import { timeFormatter } from "@/utils/timeFormatter";
-import { Swiper } from "../Swiper";
+import { Swiper } from "@/pages/QuizPage/components/Swiper";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
 import { useDispatch } from "react-redux";
-import { BACKEND_DOMAIN } from "@/config/backendDomain";
 
 const QuizDesktopDescription: React.FC<Props> = ({
   navigate,
@@ -81,7 +80,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
                       className="bg-blue h-12 rounded-[0.625rem]
                   font-semibold text-white max-w-[20.875rem]"
                     >
-                      Start quizz
+                      Start quiz
                     </button>
                   ) : (
                     <div className="h-12"></div>
@@ -91,9 +90,7 @@ const QuizDesktopDescription: React.FC<Props> = ({
               <div className="relative w-full max-w-[21rem]">
                 <div
                   style={{
-                    backgroundImage: quiz?.image.startsWith("https")
-                      ? `url(${quiz?.image})`
-                      : `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
+                    backgroundImage: `url(${quiz?.image})`,
                     aspectRatio: 1.1,
                   }}
                   className="bg-no-repeat bg-cover bg-center rounded-[1.25rem] 

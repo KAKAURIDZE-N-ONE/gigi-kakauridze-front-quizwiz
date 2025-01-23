@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { Filters } from "../../types";
+import { Filters } from "@/pages/QuizListingPage/types";
 import { useEffect, useState } from "react";
 import useGetQueryParams from "@/hooks/useGetQueryParams";
 import useCustomUpdateQueryParams from "@/hooks/useUpdateQueryParams";

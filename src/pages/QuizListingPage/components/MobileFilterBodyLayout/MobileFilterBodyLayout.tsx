@@ -1,6 +1,6 @@
 import React from "react";
-import XButton from "../../svgs/XButton";
-import SearchIcon from "../../svgs/SearchIcon";
+import XButton from "@/pages/QuizListingPage/svgs/XButton";
+import SearchIcon from "@/pages/QuizListingPage/svgs/SearchIcon";
 import { createPortal } from "react-dom";
 import { PropsType } from "./props";
 

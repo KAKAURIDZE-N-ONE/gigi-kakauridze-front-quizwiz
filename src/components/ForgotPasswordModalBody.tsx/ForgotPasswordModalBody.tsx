@@ -1,6 +1,6 @@
-import Input from "../Input";
-import { InputsModalBody } from "../InputsModalBody";
-import PrimaryButton from "../PrimaryButton";
+import Input from "@/components/Input";
+import { InputsModalBody } from "@/components/InputsModalBody";
+import PrimaryButton from "@/components/PrimaryButton";
 import { Props } from "./types";
 import useForgotPasswordModalBody from "./useForgotPasswordModalBody";
 

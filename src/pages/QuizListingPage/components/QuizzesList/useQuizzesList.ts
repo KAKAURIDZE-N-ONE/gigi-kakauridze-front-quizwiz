@@ -9,7 +9,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { sortByItems } from "../../config";
+import { sortByItems } from "@/pages/QuizListingPage/config";
 import { QUIZZES_LIMIT } from "./config";
 import { QUIZZES } from "@/config/queryKeys";
 
@@ -57,7 +57,8 @@ export default function useQuizzesList(
 
   useEffect(() => {
     if (data) {
-      if (data.next_page_url === null) setHasNextPage(false);
+      console.log(data);
+      if (data.links.next === null) setHasNextPage(false);
       else setHasNextPage(true);
 
       if (data?.data && data?.data.length > 0) {

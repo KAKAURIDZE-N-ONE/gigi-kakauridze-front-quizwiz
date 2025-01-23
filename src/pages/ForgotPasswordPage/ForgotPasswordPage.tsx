@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import useLoginPage from "../LoginPage/useLoginPage";
-import { DesktopAutorizationPage } from "../DesktopAutorizationPage";
-import { LandingPage } from "../LandingPage";
+import useLoginPage from "@/pages/LoginPage/useLoginPage";
+import { DesktopAutorizationPage } from "@/pages/DesktopAutorizationPage";
+import { LandingPage } from "@/pages/LandingPage";
 import Layout from "@/components/Layout";
 import {
   updateMobileForgotPasswordIsOpen,

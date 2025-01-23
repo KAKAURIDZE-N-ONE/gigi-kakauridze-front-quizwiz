@@ -1,9 +1,9 @@
 import React from "react";
-import { InputsModalBody } from "../InputsModalBody";
+import { InputsModalBody } from "@/components/InputsModalBody";
 import { Props } from "./types";
-import PrimaryButton from "../PrimaryButton";
+import PrimaryButton from "@/components/PrimaryButton";
 import useResetPasswordModalBody from "./useResetPasswordModalBody";
-import Input from "../Input";
+import Input from "@/components/Input";
 
 const ResetPasswordModalBody: React.FC<Props> = ({ type }) => {
   const { register, handleSubmit, onSubmit, watch, errors, isPending } =

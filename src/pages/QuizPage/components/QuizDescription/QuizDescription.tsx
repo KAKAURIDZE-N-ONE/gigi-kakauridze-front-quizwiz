@@ -1,7 +1,7 @@
 import React from "react";
 import useQuizDescription from "./useQuizDescription";
-import { QuizMobileDescription } from "../QuizMobileDescription";
-import { QuizDesktopDescription } from "../QuizDesktopDescription";
+import { QuizMobileDescription } from "@/pages/QuizPage/components/QuizMobileDescription";
+import { QuizDesktopDescription } from "@/pages/QuizPage/components/QuizDesktopDescription";
 
 const QuizDescription: React.FC = () => {
   const { navigate, quiz, similarQuizzesData, isPending } =
