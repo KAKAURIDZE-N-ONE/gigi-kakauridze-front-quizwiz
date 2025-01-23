@@ -15,7 +15,7 @@ export default function useSignUpModalBody() {
     },
   });
 
-  const { mutate, error } = useSignUp();
+  const { mutate, isPending, error } = useSignUp();
 
   const apiError = error as ApiError;
 
@@ -30,5 +30,6 @@ export default function useSignUpModalBody() {
     errors,
     serverErrors: apiError?.response?.data?.errors,
     watch,
+    isPending,
   };
 }

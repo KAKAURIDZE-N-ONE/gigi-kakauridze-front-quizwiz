@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 
-type OperationType = "add" | "fill-multiple-fields" | "clear-field";
+type OperationType = "add" | "fill-multiple-fields" | "clear-field" | "remove";
 
 const useCustomUpdateQueryParams = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,6 +27,14 @@ const useCustomUpdateQueryParams = () => {
         }
       } else {
         params[field] = value;
+      }
+    } else if (operation === "remove" && field && value) {
+      const existingValues = searchParams.get(field);
+      if (existingValues) {
+        const valuesArray = existingValues.split(",");
+        const filteredValues = valuesArray.filter((el) => el !== value);
+        if (filteredValues.length > 0) params[field] = filteredValues.join(",");
+        else delete params[field];
       }
     } else if (operation === "fill-multiple-fields") {
       for (let [field, values] of Object.entries(anyObject)) {

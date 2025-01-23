@@ -9,11 +9,11 @@ export default function useForgotPasswordModalBody() {
     formState: { errors },
   } = useForm<ForgotPassword>();
 
-  const { mutate } = useForgotPassword();
+  const { mutate, isPending } = useForgotPassword();
 
   const onSubmit: SubmitHandler<ForgotPassword> = async (data) => {
     mutate(data);
   };
 
-  return { register, handleSubmit, errors, onSubmit };
+  return { register, handleSubmit, errors, onSubmit, isPending };
 }

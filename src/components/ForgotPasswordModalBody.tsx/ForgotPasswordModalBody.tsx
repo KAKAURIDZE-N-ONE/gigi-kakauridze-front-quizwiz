@@ -5,7 +5,7 @@ import { Props } from "./types";
 import useForgotPasswordModalBody from "./useForgotPasswordModalBody";
 
 const ForgotPasswordModalBody: React.FC<Props> = ({ type }) => {
-  const { register, handleSubmit, onSubmit, errors } =
+  const { register, handleSubmit, isPending, onSubmit, errors } =
     useForgotPasswordModalBody();
 
   return (
@@ -20,6 +20,7 @@ const ForgotPasswordModalBody: React.FC<Props> = ({ type }) => {
           size="big"
           clickFn={() => {}}
           rounded="rounded-[0.625rem]"
+          disabled={isPending}
         >
           Send
         </PrimaryButton>

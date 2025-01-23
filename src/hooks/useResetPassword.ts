@@ -8,7 +8,7 @@ export default function useResetPassword() {
   const navigate = useNavigate();
   const { showSuccessToast, showAlertToast } = useToast();
 
-  const { mutate } = useMutation({
+  const { mutate, isPending } = useMutation({
     mutationFn: ({
       email,
       token,
@@ -25,5 +25,5 @@ export default function useResetPassword() {
     },
   });
 
-  return { mutate };
+  return { mutate, isPending };
 }

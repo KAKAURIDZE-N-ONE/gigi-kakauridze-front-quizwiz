@@ -4,7 +4,7 @@ import { FormValuesLogin } from "@/types/formFields";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 export default function useSignInModalBody() {
-  const { mutate, error } = useLogIn();
+  const { mutate, isPending, error } = useLogIn();
 
   const apiError = error as ApiErrorSingle;
 
@@ -26,5 +26,6 @@ export default function useSignInModalBody() {
     errors,
     serverError: apiError?.response?.data?.message,
     watch,
+    isPending,
   };
 }

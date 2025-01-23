@@ -40,7 +40,7 @@ const QuizzesList: React.FC<PropsType> = ({ page, setHasNextPage }) => {
           );
         })}
       </div>
-      {isPending && (
+      {isPending && page === 1 && (
         <div className={`h-[80vh] flex items-center justify-center`}>
           <div className="-translate-y-14">
             <div className="loader "></div>

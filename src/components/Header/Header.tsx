@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import useHeader from "./useHeader";
 import { BigSearchInput } from "./components/BigSearchInput";
 import LogOut from "@/assets/svgs/LogOut";
+import HoverArrow from "@/assets/svgs/HoverArrow";
 
 const Header: React.FC = () => {
   const {
@@ -141,16 +142,25 @@ const Header: React.FC = () => {
               <button
                 onClick={() => navigate("/sign-up")}
                 className="bg-black w-[6.25rem] h-[2.875rem] 
-              rounded-[0.25rem] font-bold text-white hover:opacity-80 transition-all duration-300"
+              rounded-[0.25rem] font-bold text-white hover:opacity-80 transition-all duration-300 
+              border border-white btn-hover"
               >
                 Sign up
               </button>
               <button
                 onClick={() => navigate("/log-in")}
                 className="w-[6.25rem] h-[2.875rem] 
-              font-bold text-blue  hover:opacity-80 transition-all duration-300"
+              font-bold text-blue  hover:opacity-80 transition-all duration-300
+               relative group"
               >
                 Log in
+                <span
+                  className="absolute left-1/2 transform translate-x-14 transition-all 
+        duration-300 group-hover:translate-x-8 opacity-0 group-hover:opacity-100
+        top-1/2 -translate-y-1/2"
+                >
+                  <HoverArrow fill="blue" />
+                </span>
               </button>
             </div>
           </div>
