@@ -1,9 +1,9 @@
 import React from "react";
-import LogoIcon from "../../assets/svgs/LogoIcon";
-import MenuIcon from "../../assets/svgs/MenuIcon";
-import SearchIcon from "../../assets/svgs/SearchIcon";
-import Modal from "../Modal/Modal";
-import AutorizationModalBody from "../AutorizationModalBody/AutorizationModalBody";
+import LogoIcon from "@/assets/svgs/LogoIcon";
+import MenuIcon from "@/assets/svgs/MenuIcon";
+import SearchIcon from "@/assets/svgs/SearchIcon";
+import { Modal } from "@/components/Modal";
+import AutorizationModalBody from "@/components/AutorizationModalBody/AutorizationModalBody";
 import profileImage from "@/assets/images/profileImage.jpg";
 import { updateModalIsOpen } from "@/store/slices/modalSlice";
 import { Link } from "react-router-dom";

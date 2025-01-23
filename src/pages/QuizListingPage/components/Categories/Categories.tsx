@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowRightIcon from "../../svgs/ArrowRightIcon";
+import ArrowRightIcon from "@/pages/QuizListingPage/svgs/ArrowRightIcon";
 import { Category } from "@/types";
 import CategoryItem from "./components/CategoryItem/CategoryItem";
 import useCategories from "./useCategories";

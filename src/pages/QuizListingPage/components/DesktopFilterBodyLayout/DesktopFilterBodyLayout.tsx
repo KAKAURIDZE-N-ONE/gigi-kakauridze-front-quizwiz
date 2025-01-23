@@ -1,5 +1,5 @@
 import React from "react";
-import FilterButton from "../FilterButton/FilterButton";
+import { FilterButton } from "@/pages/QuizListingPage/components/FilterButton";
 import SearchIcon from "../../svgs/SearchIcon";
 import XButton from "../../svgs/XButton";
 import { PropsType } from "./types";

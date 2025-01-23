@@ -1,7 +1,7 @@
 import React from "react";
-import { LandingPage } from "../LandingPage";
+import { LandingPage } from "@/pages/LandingPage";
 import Layout from "@/components/Layout";
-import { DesktopAutorizationPage } from "../DesktopAutorizationPage";
+import { DesktopAutorizationPage } from "@/pages/DesktopAutorizationPage";
 import useResetPasswordPage from "./useResetPasswordPage";
 
 const ResetPasswordPage: React.FC = () => {

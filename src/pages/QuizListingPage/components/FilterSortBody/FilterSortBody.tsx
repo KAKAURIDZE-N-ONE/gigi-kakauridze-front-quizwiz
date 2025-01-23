@@ -1,5 +1,5 @@
-import MarkIcon from "../../svgs/MarkIcon";
-import { sortItems } from "../../config";
+import MarkIcon from "@/pages/QuizListingPage/svgs/MarkIcon";
+import { sortItems } from "@/pages/QuizListingPage/config";
 import { PropsType } from "./types";
 
 const FilterSortBody: React.FC<PropsType> = ({ setSortBy, sortBy, type }) => {

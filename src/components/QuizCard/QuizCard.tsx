@@ -1,15 +1,14 @@
 import React, { memo } from "react";
-import { IconLayout } from "../../pages/QuizListingPage/components/IconLayout";
-import MarkIcon from "../../pages/QuizListingPage/svgs/MarkIcon";
-import LightningIcon from "../../pages/QuizListingPage/svgs/LightningIcon";
-import PointsIcon from "../../pages/QuizListingPage/svgs/PointsIcon";
-import BulbIcon from "../../pages/QuizListingPage/svgs/BulbIcon";
+import { IconLayout } from "@/pages/QuizListingPage/components/IconLayout";
+import MarkIcon from "@/pages/QuizListingPage/svgs/MarkIcon";
+import LightningIcon from "@/pages/QuizListingPage/svgs/LightningIcon";
+import PointsIcon from "@/pages/QuizListingPage/svgs/PointsIcon";
+import BulbIcon from "@/pages/QuizListingPage/svgs/BulbIcon";
 import { timeFormatter } from "@/utils/timeFormatter";
 import useQuizCard from "./useQuizCard";
 import { Props } from "./types";
 import { Link } from "react-router-dom";
-import { CategoryItems } from "../CategoryItems";
-import { BACKEND_DOMAIN } from "@/config/backendDomain";
+import { CategoryItems } from "@/components/CategoryItems";
 
 const QuizCard: React.FC<Props> = memo(
   ({
@@ -51,9 +50,7 @@ const QuizCard: React.FC<Props> = memo(
         >
           <div
             style={{
-              backgroundImage: image.startsWith("https")
-                ? `url(${image})`
-                : `url(${BACKEND_DOMAIN}/storage/${image})`,
+              backgroundImage: `url(${image})`,
               aspectRatio: 1.4444,
             }}
             className="bg-cover bg-no-repeat bg-center"

@@ -1,5 +1,5 @@
 import React from "react";
-import ArrowDownIcon from "../svgs/ArrowDownIcon";
+import ArrowDownIcon from "@/pages/QuizListingPage/svgs/ArrowDownIcon";
 
 const LoadMoreButton: React.FC = () => {
   return (

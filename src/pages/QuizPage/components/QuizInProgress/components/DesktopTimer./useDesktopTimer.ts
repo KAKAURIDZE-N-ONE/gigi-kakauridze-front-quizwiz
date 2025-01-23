@@ -1,7 +1,7 @@
 import useTimer from "@/hooks/useTimer";
 import { HookProps } from "./types";
 import { useDispatch } from "react-redux";
-import useSubmitQuiz from "../../hooks/useSubmitQuiz";
+import useSubmitQuiz from "@/pages/QuizPage/components/QuizInProgress/hooks/useSubmitQuiz";
 import { useSelector } from "react-redux";
 import { getAllSelectedAnswers } from "@/store/slices/quizSlice";
 

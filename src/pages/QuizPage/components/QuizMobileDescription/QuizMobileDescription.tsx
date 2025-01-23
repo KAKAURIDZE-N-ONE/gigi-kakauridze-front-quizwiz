@@ -6,10 +6,9 @@ import Points from "./svgs/Points";
 import Rocket from "./svgs/Rocket";
 import Time from "./svgs/Time";
 import { timeFormatter } from "@/utils/timeFormatter";
-import { Swiper } from "../Swiper";
+import { Swiper } from "@/pages/QuizPage/components/Swiper";
 import { updateQuizIsStarted } from "@/store/slices/quizSlice";
 import useQuizMobileDescription from "./useQuizMobileDescription";
-import { BACKEND_DOMAIN } from "@/config/backendDomain";
 
 const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
   const { sliderWidth, dispatch } = useQuizMobileDescription();
@@ -31,9 +30,7 @@ const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
             </p>
             <div
               style={{
-                backgroundImage: quiz?.image.startsWith("https")
-                  ? `url(${quiz?.image})`
-                  : `url(${BACKEND_DOMAIN}/storage/${quiz?.image})`,
+                backgroundImage: `url(${quiz?.image})`,
                 aspectRatio: 1.4379,
               }}
               className="bg-cover bg-no-repeat bg-center
@@ -79,7 +76,7 @@ const QuizMobileDescription: React.FC<Props> = ({ quiz, similarQuizzes }) => {
             font-semibold text-lg rounded-[0.625rem]
           "
             >
-              Start quizz
+              Start quiz
             </button>
           )}
         </div>
